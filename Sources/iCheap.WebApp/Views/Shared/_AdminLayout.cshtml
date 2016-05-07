@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title | iCheap Control Panel</title>
+    <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/devextreme")
+    @Scripts.Render("~/bundles/utils")
+</head>
+<body>
+    <div class="app app-header-fixed">
+        <!-- header -->
+        <header id="header" class="app-header navbar" role="menu">
+            <!-- navbar header -->
+            <div class="navbar-header bg-dark">
+                <button class="pull-right visible-xs" ui-toggle="show" target=".navbar-collapse">
+                    <i class="ti-settings"></i>
+                </button>
+                <button class="pull-right visible-xs" ui-toggle="show" target=".app-aside">
+                    <i class="ti-menu"></i>
+                </button>
+                <!-- brand -->
+                <a class="navbar-brand text-lt">
+                    <i class="pull-right ti-arrow-circle-down text-sm m-v-xs m-l-xs"></i>
+                    <i class="glyphicon glyphicon-th-large text-md"></i>
+                    <img src="~/assets/images/logo.png" alt="." class="hide">
+                    <span class="hidden-folded m-l-xs"><b>iCheap</b><sup class="text-xs font-thin">&nbsp;v1</sup></span>
+                </a>
+                <!-- / brand -->
+            </div>
+            <!-- / navbar header -->
+            <!-- navbar collapse -->
+            <div class="navbar-collapse bg-dark box-shadow-md hidden-xs">
+                <!-- nav -->
+                <ul class="nav navbar-nav navbar-left">
+                    @*@if (ViewBag.NavBarItems != null)
+                    {
+                        foreach (var item in ViewBag.NavBarItems)
+                        {*@
+                            @*<li>
+                                <a href="@item.Url">
+                                    <i class="fa fa-fw @item.Icon"></i>@item.Name
+                                </a>
+                            </li>*@
+                        @*}
+                    }*@
+                    <li>
+                        <a href="#">Menu</a>
+                    </li>
+                </ul>
+                <!-- / nav -->
+                <!-- nabar right -->
+                <ul class="nav navbar-nav navbar-right m-r-n">
+                    <li class="dropdown">
+                        <a href="#" class="clear no-padding-h" data-toggle="dropdown">
+                            <span class="hidden-sm m-l">Admin</span>
+                            <b class="caret m-h-xs hidden-sm"></b>
+                        </a>
+                        <ul class="dropdown-menu pull-right no-b-t">
+                            <li>
+                                <a href="@Url.Action("ChangePassword", "Account", new { })">Change Password</a>
+                            </li>
+                            <li>
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                }
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- / navbar right -->
+                <!-- search form -->
+                <form class="navbar-form navbar-form-sm navbar-right visible-xs" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-sm no-bg btn-icon no-shadow no-padder"><i class="ti-search"></i></button>
+                            </span>
+                            <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm no-bg no-border" placeholder="Search...">
+                        </div>
+                    </div>
+                </form>
+                <!-- / search form -->
+            </div>
+            <!-- / navbar collapse -->
+
+        </header>
+        <!-- / header -->
+        <!-- content -->
+        <div id="content" class="app-content" role="main">
+
+            @RenderBody()
+
+        </div>
+        <!-- / content -->
+        <!-- footer -->
+        <footer id="footer" class="app-footer" role="footer">
+            <div class="p bg-white text-xs">
+                <div class="pull-right hidden-xs hidden-sm text-muted">
+                    <strong>HeyMetro</strong> - Built with AngularJS &amp; Bootstrap  &copy; Copyright 2014
+                </div>
+                <ul class="list-inline no-margin text-center-xs">
+                    <li>
+                        <a href="page.document.html">Documents</a>
+                    </li>
+                    <li class="text-muted">-</li>
+                    <li>
+                        <a href="http://themeforest.net/user/heyflat/portfolio?ref=heyflat" target="_blank">Purchase</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        <!-- / footer -->
+
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿[
+    {
+        "action": "Index",
+        "controller": "Origin",
+        "icon": "fa-home",
+        "isDropdown": false,
+        "name": "Origin"
+    }
+]

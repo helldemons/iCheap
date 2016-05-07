@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCheap.Models", "iCheap.Models\iCheap.Models.csproj", "{28B98576-4EC3-4B5C-945B-CA1B686DF80D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{76B91F27-26BB-41F2-8D40-158D0684BA3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access", "Data Access", "{AD66F2C9-97A5-4F54-A7FF-438054DC4323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCheap.Repositories", "iCheap.Repositories\iCheap.Repositories.csproj", "{42EC838D-79F4-4B39-93F0-B3C568D19415}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{A40D03A6-0400-485A-9971-DE0963219D57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{F580E15B-B0F3-43C8-BA9B-789BD1ADD365}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCheap.Resolvers", "iCheap.Resolvers\iCheap.Resolvers.csproj", "{55340D8B-B29B-48E2-AB0A-DDCEFDE431B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCheap.WebApp", "iCheap.WebApp\iCheap.WebApp.csproj", "{2A4CCEB3-B2B5-4ECD-9212-1891929DA15C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28B98576-4EC3-4B5C-945B-CA1B686DF80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B98576-4EC3-4B5C-945B-CA1B686DF80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B98576-4EC3-4B5C-945B-CA1B686DF80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B98576-4EC3-4B5C-945B-CA1B686DF80D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42EC838D-79F4-4B39-93F0-B3C568D19415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42EC838D-79F4-4B39-93F0-B3C568D19415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42EC838D-79F4-4B39-93F0-B3C568D19415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42EC838D-79F4-4B39-93F0-B3C568D19415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55340D8B-B29B-48E2-AB0A-DDCEFDE431B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55340D8B-B29B-48E2-AB0A-DDCEFDE431B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55340D8B-B29B-48E2-AB0A-DDCEFDE431B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55340D8B-B29B-48E2-AB0A-DDCEFDE431B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4CCEB3-B2B5-4ECD-9212-1891929DA15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4CCEB3-B2B5-4ECD-9212-1891929DA15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4CCEB3-B2B5-4ECD-9212-1891929DA15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4CCEB3-B2B5-4ECD-9212-1891929DA15C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28B98576-4EC3-4B5C-945B-CA1B686DF80D} = {76B91F27-26BB-41F2-8D40-158D0684BA3E}
+		{42EC838D-79F4-4B39-93F0-B3C568D19415} = {AD66F2C9-97A5-4F54-A7FF-438054DC4323}
+		{55340D8B-B29B-48E2-AB0A-DDCEFDE431B3} = {F580E15B-B0F3-43C8-BA9B-789BD1ADD365}
+		{2A4CCEB3-B2B5-4ECD-9212-1891929DA15C} = {A40D03A6-0400-485A-9971-DE0963219D57}
+	EndGlobalSection
+EndGlobal
