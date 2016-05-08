@@ -199,6 +199,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\BaseAPIController.cs" />
+    <Compile Include="API\Services.cs" />
+    <Compile Include="API\Users\UserInfoController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -206,8 +209,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Products\OriginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +228,7 @@
     <Compile Include="Utils\CustomPrincipal.cs" />
     <Compile Include="Utils\CustomPrincipalSerializerModel.cs" />
     <Compile Include="Utils\NavBarDisplayActionFilter.cs" />
+    <Compile Include="Utils\NotImplExceptionFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\admin\bower_components\animate.css\.gitignore" />
@@ -635,6 +641,7 @@
     <Content Include="assets\admin\Scripts\ai.0.15.0-build58334.js" />
     <Content Include="assets\admin\Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="assets\admin\Scripts\app\app.js" />
+    <Content Include="assets\admin\Scripts\app\origin.js" />
     <Content Include="assets\admin\Scripts\bootstrap.js" />
     <Content Include="assets\admin\Scripts\bootstrap.min.js" />
     <Content Include="assets\admin\Scripts\devextreme-localization\dx.webappjs.de.js" />
@@ -1380,9 +1387,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Origin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1079,7 +1079,7 @@ namespace iCheap.Repositories
         public static string GetConnectionString(string connectionString = null)
         {
             if (string.IsNullOrEmpty(connectionString))
-                return ConfigurationManager.ConnectionStrings["AutoWinEx"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["iCheap"].ConnectionString;
 
             return connectionString;
         }

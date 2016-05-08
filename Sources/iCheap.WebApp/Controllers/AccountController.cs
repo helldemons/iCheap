@@ -9,11 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iCheap.WebApp.Models;
+using iCheap.Models;
+using System.Web.Script.Serialization;
+using System.Web.Security;
 
 namespace iCheap.WebApp.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -66,29 +69,51 @@ namespace iCheap.WebApp.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            var user = Services.HttpGetObject<Users>("users", new object[] { "login", model.Email, model.Password });
+            if (user == null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                ModelState.AddModelError("", "Invalid login attempt");
+                return View(model);
             }
+
+            var urlHelper = new UrlHelper(HttpContext.Request.RequestContext);
+            CustomPrincipalSerializerModel serializeModel = new CustomPrincipalSerializerModel();
+            if (user.Role == UserRole.Admin)
+            {
+                //If user is admin
+                serializeModel.Role = UserRole.Admin;
+                returnUrl = urlHelper.Action("Index", "Home");
+            }
+            else
+            {
+                //If user is normal user
+                serializeModel.Role = UserRole.User;
+                returnUrl = urlHelper.Action("Index", "Home");
+            }
+            serializeModel.UserId = user.UserID + string.Empty;
+            serializeModel.Username = user.Username;
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string userData = serializer.Serialize(serializeModel);
+            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                1,
+                model.Email,
+                DateTime.Now,
+                DateTime.Now.AddMinutes(15),
+                false,
+                userData);
+            string encTicket = FormsAuthentication.Encrypt(authTicket);
+            HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+            Response.Cookies.Add(faCookie);
+            return RedirectToLocal(returnUrl);
         }
 
         //
@@ -387,12 +412,25 @@ namespace iCheap.WebApp.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult LogOff()
+        //{
+        //    Session.Clear();
+        //    FormsAuthentication.SignOut();
+        //    //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        //    return RedirectToAction("Login", "Account");
+        //}
+
+        //
+        // GET: /Account/LogOff
+        [HttpGet]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            Session.Clear();
+            FormsAuthentication.SignOut();
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Account");
         }
 
         //

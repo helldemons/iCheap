@@ -1,4 +1,6 @@
-﻿namespace iCheap.WebApp
+﻿using iCheap.Models;
+
+namespace iCheap.WebApp
 {
     public class CustomPrincipalSerializerModel
     {

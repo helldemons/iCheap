@@ -11,6 +11,7 @@ namespace iCheap.WebApp
         {
             // Web API configuration and services
             Resolvers.Resolvers.Register(config);
+            Services.Init();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

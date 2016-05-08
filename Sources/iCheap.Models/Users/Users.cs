@@ -11,6 +11,9 @@ namespace iCheap.Models
         public string Username { get; set; }
 
         [JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
-        public string Password { get; set; }
+        public string Password { get; set; }
+
+        [JsonProperty(PropertyName = "role", NullValueHandling = NullValueHandling.Ignore)]
+        public UserRole Role { get; set; }
     }
 }

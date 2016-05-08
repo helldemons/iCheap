@@ -20,17 +20,20 @@
         <header id="header" class="app-header navbar" role="menu">
             <!-- navbar header -->
             <div class="navbar-header bg-dark">
+            @if (User.Identity.IsAuthenticated)
+            {
                 <button class="pull-right visible-xs" ui-toggle="show" target=".navbar-collapse">
                     <i class="ti-settings"></i>
                 </button>
                 <button class="pull-right visible-xs" ui-toggle="show" target=".app-aside">
                     <i class="ti-menu"></i>
                 </button>
+            }
                 <!-- brand -->
                 <a class="navbar-brand text-lt">
                     <i class="pull-right ti-arrow-circle-down text-sm m-v-xs m-l-xs"></i>
                     <i class="glyphicon glyphicon-th-large text-md"></i>
-                    <img src="~/assets/images/logo.png" alt="." class="hide">
+                    <img src="~/assets/admin/images/logo.png" alt="." class="hide">
                     <span class="hidden-folded m-l-xs"><b>iCheap</b><sup class="text-xs font-thin">&nbsp;v1</sup></span>
                 </a>
                 <!-- / brand -->
@@ -40,23 +43,22 @@
             <div class="navbar-collapse bg-dark box-shadow-md hidden-xs">
                 <!-- nav -->
                 <ul class="nav navbar-nav navbar-left">
-                    @*@if (ViewBag.NavBarItems != null)
+                    @if (ViewBag.NavBarItems != null)
                     {
                         foreach (var item in ViewBag.NavBarItems)
-                        {*@
-                            @*<li>
+                        {
+                            <li>
                                 <a href="@item.Url">
                                     <i class="fa fa-fw @item.Icon"></i>@item.Name
                                 </a>
-                            </li>*@
-                        @*}
-                    }*@
-                    <li>
-                        <a href="#">Menu</a>
-                    </li>
+                            </li>
+                        }
+                    }
                 </ul>
                 <!-- / nav -->
                 <!-- nabar right -->
+            @if (User.Identity.IsAuthenticated)
+            {
                 <ul class="nav navbar-nav navbar-right m-r-n">
                     <li class="dropdown">
                         <a href="#" class="clear no-padding-h" data-toggle="dropdown">
@@ -68,15 +70,17 @@
                                 <a href="@Url.Action("ChangePassword", "Account", new { })">Change Password</a>
                             </li>
                             <li>
-                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                @*@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                                }
+                                }*@
+                                <a href="@Url.Action("LogOff", "Account", new { })">Log off</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+            }
                 <!-- / navbar right -->
                 <!-- search form -->
                 <form class="navbar-form navbar-form-sm navbar-right visible-xs" role="search">
@@ -97,9 +101,12 @@
         <!-- / header -->
         <!-- content -->
         <div id="content" class="app-content" role="main">
-
-            @RenderBody()
-
+            <div class="p-h-md p-v bg-white box-shadow pos-rlt">
+                <h3 class="no-margin">@ViewBag.Title</h3>
+            </div>
+            <div class="p-md">
+                @RenderBody()
+            </div>
         </div>
         <!-- / content -->
         <!-- footer -->

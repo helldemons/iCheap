@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Net;
 
 namespace iCheap.Models
 {
@@ -19,5 +20,26 @@ namespace iCheap.Models
 
         [JsonProperty(PropertyName = "editTime", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? EditTime { get; set; }
+    }
+
+    public class Response<T>
+    {
+        [JsonProperty(PropertyName = "status", NullValueHandling = NullValueHandling.Ignore)]
+        public bool Status { get; set; }
+
+        [JsonProperty(PropertyName = "statusCode", NullValueHandling = NullValueHandling.Ignore)]
+        public HttpStatusCode StatusCode { get; set; }
+
+        [JsonProperty(PropertyName = "message", NullValueHandling = NullValueHandling.Ignore)]
+        public string ErrMess { get; set; }
+
+        [JsonProperty(PropertyName = "data", NullValueHandling = NullValueHandling.Ignore)]
+        public T Data { get; set; }
+    }
+
+    public enum UserRole
+    {
+        Admin = 0,
+        User = 1
     }
 }

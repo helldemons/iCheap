@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iCheap.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
@@ -25,11 +26,5 @@ namespace iCheap.WebApp
         {
             return string.Equals(role, Role.ToString(), StringComparison.OrdinalIgnoreCase);
         }
-    }
-
-    public enum UserRole
-    {
-        Admin = 0,
-        User = 1
     }
 }

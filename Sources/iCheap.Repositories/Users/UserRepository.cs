@@ -20,7 +20,7 @@ namespace iCheap.Repositories
             param.Add("Username", username, DbType.String);
             param.Add("Password", password, DbType.String);
 
-            var users = SQLHelper.QuerySP(storedName, param);
+            var users = SQLHelper.QuerySP<Users>(storedName, param);
             if (users != null && users.Any())
                 return users.Single();
 
