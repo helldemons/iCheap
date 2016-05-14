@@ -4,7 +4,7 @@ namespace iCheap.Models
 {
     public partial class Products : BaseModel
     {
-        [JsonProperty(PropertyName = "productID", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "productId", NullValueHandling = NullValueHandling.Ignore)]
         public int? ProductID { get; set; }
 
         [JsonProperty(PropertyName = "productCode", NullValueHandling = NullValueHandling.Ignore)]

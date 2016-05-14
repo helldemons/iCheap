@@ -200,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\BaseAPIController.cs" />
+    <Compile Include="API\Products\BrandInfoController.cs" />
+    <Compile Include="API\Products\CategoryInfoController.cs" />
+    <Compile Include="API\Products\OriginInfoController.cs" />
     <Compile Include="API\Services.cs" />
     <Compile Include="API\Users\UserInfoController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -212,6 +215,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Products\BrandController.cs" />
+    <Compile Include="Controllers\Products\CategoryController.cs" />
     <Compile Include="Controllers\Products\OriginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -641,6 +646,8 @@
     <Content Include="assets\admin\Scripts\ai.0.15.0-build58334.js" />
     <Content Include="assets\admin\Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="assets\admin\Scripts\app\app.js" />
+    <Content Include="assets\admin\Scripts\app\brand.js" />
+    <Content Include="assets\admin\Scripts\app\category.js" />
     <Content Include="assets\admin\Scripts\app\origin.js" />
     <Content Include="assets\admin\Scripts\bootstrap.js" />
     <Content Include="assets\admin\Scripts\bootstrap.min.js" />
@@ -1388,6 +1395,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Origin\Index.cshtml" />
+    <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

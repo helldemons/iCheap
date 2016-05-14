@@ -18,6 +18,14 @@ namespace iCheap.Resolvers
         private static void RegisterRepositories(UnityContainer container)
         {
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IOriginRepository, OriginRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IBrandRepository, BrandRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICategoryRepository, CategoryRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IProductRepository, ProductRepository>(new HierarchicalLifetimeManager());
+
+            container.RegisterType<IBlogCategoryRepository, BlogCategoryRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IBlogRepository, BlogRepository>(new HierarchicalLifetimeManager());
         }
     }
 }

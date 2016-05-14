@@ -4,7 +4,7 @@ namespace iCheap.Models
 {
     public partial class Origins : BaseModel
     {
-        [JsonProperty(PropertyName = "originID", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "originId", NullValueHandling = NullValueHandling.Ignore)]
         public int? OriginID { get; set; }
 
         [JsonProperty(PropertyName = "originCode", NullValueHandling = NullValueHandling.Ignore)]

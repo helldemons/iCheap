@@ -13,6 +13,7 @@
     @Scripts.Render("~/admin/bundles/bootstrap")
     @Scripts.Render("~/admin/bundles/devextreme")
     @Scripts.Render("~/admin/bundles/utils")
+    @Scripts.Render("~/admin/bundles/app")
 </head>
 <body>
     <div class="app app-header-fixed">
@@ -101,9 +102,12 @@
         <!-- / header -->
         <!-- content -->
         <div id="content" class="app-content" role="main">
+        @if (!ViewContext.RouteData.Values["action"].ToString().ToLower().Equals("login"))
+        {
             <div class="p-h-md p-v bg-white box-shadow pos-rlt">
                 <h3 class="no-margin">@ViewBag.Title</h3>
             </div>
+        }
             <div class="p-md">
                 @RenderBody()
             </div>

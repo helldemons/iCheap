@@ -1,32 +1,40 @@
 ﻿$(function () {
     var self = this;
-    var origins = []
-    var originItem = {};
-    
-    self.loadData = function (){
+    var categories = [];
+    var categoryData = [];
+    var categoryItem = {};
+
+    self.loadData = function () {
         $.getJSON(url, function (response) {
-            origins = response.data;
-            $('#grdOrigin').dxDataGrid('instance').option('dataSource', origins);
+            categories = response.data;
+            $('#grdCategory').dxDataGrid('instance').option('dataSource', categories);
+
+            categoryData = [];
+            categoryData = $.grep(categories, function (c) {
+                return c.parentId === 0;
+            });
+            if ($('#cboCategory').dxSelectBox('instance') !== undefined)
+                $('#cboCategory').dxSelectBox('instance').option('dataSource', categoryData);
         });
     };
     
     self.init = function () {
-        self.popupDetail = $("#popOrigin").dxPopup({
+        self.popupDetail = $("#popCategory").dxPopup({
             fullScreen: false,
-            title: 'Origin Detail',
+            title: 'Thông Tin Nhóm Hàng Hóa',
             height: '80%',
             width: '90%',
             buttons: [
                 {
                     toolbar: 'bottom', location: 'before', widget: 'button', options: {
-                        text: 'Save & Close', onClick: function () {
+                        text: 'Lưu & Đóng', onClick: function () {
                             self.saveData(true);
                         }
                     }
                 },
                 {
                     toolbar: 'bottom', location: 'before', widget: 'button', options: {
-                        text: 'Save & Add',
+                        text: 'Lưu & Thêm',
                         onClick: function () {
                             self.saveData(false);
                         }
@@ -34,35 +42,39 @@
                 },
                 {
                     toolbar: 'bottom', location: 'before', widget: 'button', options: {
-                        text: 'Cancel', onClick: function () {
-                            $("#popOrigin").dxPopup("instance").hide();
+                        text: 'Hủy Bỏ', onClick: function () {
+                            $("#popCategory").dxPopup("instance").hide();
                         }
                     }
                 }
             ],
             closeOnOutsideClick: function (e) {
-                return e.target !== $("#popOrigin").get()[0];
+                return e.target !== $("#popCategory").get()[0];
             }
         }).dxPopup("instance");
 
-        self.dataGrid = $("#grdOrigin").dxDataGrid({
-            dataSource: origins,
+        self.dataGrid = $("#grdCategory").dxDataGrid({
+            dataSource: categories,
             allowColumnReordering: true,
             allowColumnResizing: true,
             columnAutoWidth: true,
             filterRow: {
                 visible: true,
-                showAllText: '(Show All)',
+                showAllText: '(Tất Cả)',
                 showOperationChooser: true
             },
             editing: {
                 mode: 'batch',
-                allowDeleting: true
+                allowDeleting: true,
+                texts: {
+                    deleteRow: 'Xóa',
+                    undeleteRow: 'Hủy Bỏ'
+                }
             },
             onContentReady: function () {
                 $("#addNewButton").remove();
                 $("#reloadButton").remove();
-                $("#grdOrigin").find('.dx-datagrid-header-panel')
+                $("#grdCategory").find('.dx-datagrid-header-panel')
                     .append($("<div id='reloadButton'>").dxButton({
                         icon: 'refresh',
                         onClick: function () {
@@ -79,11 +91,15 @@
             selection: {
                 mode: 'row'
             },
+            loadPanel: {
+                text: 'Đang tải dữ liệu...'
+            },
             searchPanel: {
                 visible: true,
-                highlightSearchText: true
+                highlightSearchText: true,
+                placeholder: 'Tìm kiếm...'
             },
-            paging: { pageSize: 10 },
+            paging: { pageSize: 20 },
             pager: {
                 showNavigationButtons: true,
                 showPageSizeSelector: true,
@@ -109,15 +125,15 @@
                 },
                 {
                     width: '20%',
-                    dataField: 'originCode',
-                    caption: 'Code',
+                    dataField: 'categoryCode',
+                    caption: 'Mã nhóm',
                     dataType: 'string',
                     cellTemplate: function (container, options) {
                         $("<span class='gridbutton-arrowleft' />")
                         .text(options.text)
                         .css({ "text-decoration": "underline", "font-weight": "bold" })
                         .on('click', function () {
-                            $.getJSON([url , '/', options.data.originId].join(''), function (response) {
+                            $.getJSON([url, '/', options.data.categoryId].join(''), function (response) {
                                 self.openForm(response.data);
                             });
                         })
@@ -127,27 +143,31 @@
                 {
                     width: '30%',
                     dataField: 'vnName',
-                    caption: 'VN Name',
+                    caption: 'Tên nhóm VN',
                     dataType: 'string',
-                    validationRules: [{ type: 'required' }]
                 },
                 {
                     width: '30%',
                     dataField: 'enName',
-                    caption: 'EN Name',
+                    caption: 'Tên nhóm EN',
                     dataType: 'string',
-                    validationRules: [{ type: 'required' }]
+                },
+                {
+                    width: '30%',
+                    dataField: 'parent.vnName',
+                    caption: 'Thuộc nhóm',
+                    dataType: 'string',
                 },
                 {
                     width: '10%',
                     dataField: 'rank',
-                    caption: 'Rank',
+                    caption: 'Thứ tự',
                     dataType: 'number',
                 },
                 {
                     width: '10%',
                     dataField: 'inActive',
-                    caption: 'Active',
+                    caption: 'Đang dùng',
                     dataType: 'boolean',
                 }
             ],
@@ -163,7 +183,7 @@
                     if (!data.Status)
                         info.cancel = true;
 
-                    ShowMessage(data.Status, data.Message);
+                    showMessage(data.Status, data.Message);
                 });
             },
             onRowRemoved: function (info) {
@@ -175,19 +195,19 @@
     };
 
     self.getForm = function (d) {
-        originItem = d;
-        var form = $("<div id='originForm'>").dxForm({
-            formData: originItem,
+        categoryItem = d;
+        var form = $("<div id='categoryForm'>").dxForm({
+            formData: categoryItem,
             labelLocation: 'left',
             showOptionalMark: '*',
             optionalMark: '',
             scrollingEnabled: true,
             onFieldDataChanged: function (model) {
-                originItem[model.dataField] = model.value;
+                categoryItem[model.dataField] = model.value;
             },
             customizeItem: function (item) {
                 switch (item.dataField) {
-                    case "originCode":
+                    case "categoryCode":
                     case "vnName":
                     case "enName":
                     case "vnRewriteUrl":
@@ -206,28 +226,52 @@
                     items: [
                         {
                             label: {
-                                text: 'Origin code'
+                                text: 'Mã nhóm hàng'
                             },
-                            dataField: 'originCode',
+                            dataField: 'categoryCode',
                             isRequired: true,
                             editorType: 'dxTextBox',
                             template: function (data, itemElement) {
-                                var textBox = $("<div id='originCode'>");
+                                var textBox = $("<div id='categoryCode'>");
                                 textBox.dxTextBox({
                                     value: data.editorOptions.value,
                                     onValueChanged: function (e) {
-                                        d["originCode"] = getDataCode(e.value);
-                                        $("#originCode").dxTextBox("instance").option("value", getDataCode(e.value));
+                                        d["categoryCode"] = getDataCode(e.value);
+                                        $("#categoryCode").dxTextBox("instance").option("value", getDataCode(e.value));
                                     }
                                 });
 
                                 textBox.appendTo(itemElement);
                             }
                         },
-                        { itemType: 'empty', colSpan: 3 },
                         {
                             label: {
-                                text: 'VN Name'
+                                text: 'Thuộc nhóm:'
+                            },
+                            dataField: 'parentId',
+                            editorType: 'dxSelectBox',
+                            template: function (data, itemElement) {
+                                //console.log(data.editorOptions.value);
+                                var textBox = $("<div id='cboCategory'>");
+                                textBox.dxSelectBox({
+                                    dataSource: categoryData,
+                                    searchEnabled: true,
+                                    placeholder: 'Chọn nhóm bất kỳ',
+                                    displayExpr: 'vnName',
+                                    valueExpr: 'categoryId',
+                                    value: data.editorOptions.value,
+                                    onValueChanged: function (e) {
+                                        d["parentId"] = e.value;
+                                    }
+                                });
+
+                                textBox.appendTo(itemElement);
+                            }
+                        },
+                        { itemType: 'empty', colSpan: 2 },
+                        {
+                            label: {
+                                text: 'Tên nhóm VN'
                             },
                             dataField: 'vnName',
                             colSpan: 2,
@@ -249,7 +293,7 @@
                         },
                         {
                             label: {
-                                text: 'VN Rewrite URL'
+                                text: 'Rewrite URL VN'
                             },
                             dataField: 'vnRewriteUrl',
                             colSpan: 2,
@@ -267,7 +311,7 @@
                         },
                         {
                             label: {
-                                text: 'EN Name'
+                                text: 'Tên nhóm EN'
                             },
                             dataField: 'enName',
                             colSpan: 2,
@@ -278,8 +322,8 @@
                                 textBox.dxTextBox({
                                     value: data.editorOptions.value,
                                     onValueChanged: function (e) {
-                                        originItem["enName"] = e.value;
-                                        originItem["enRewriteUrl"] = getRewriteUrl(e.value);
+                                        categoryItem["enName"] = e.value;
+                                        categoryItem["enRewriteUrl"] = getRewriteUrl(e.value);
                                         $("#enRewriteUrl").dxTextBox("instance").option("value", getRewriteUrl(e.value));
                                     }
                                 });
@@ -289,7 +333,7 @@
                         },
                         {
                             label: {
-                                text: 'EN Rewrite URL'
+                                text: 'Rewrite URL EN'
                             },
                             dataField: 'enRewriteUrl',
                             colSpan: 2,
@@ -313,21 +357,21 @@
                                     items: [
                                         {
                                             label: {
-                                                text: 'VN Name SEO'
+                                                text: 'Tên nhóm VN SEO'
                                             },
                                             dataField: 'vnNameSEO',
                                             colSpan: 4
                                         },
                                         {
                                             label: {
-                                                text: 'EN Name SEO'
+                                                text: 'Tên nhóm EN SEO'
                                             },
                                             dataField: 'enNameSEO',
                                             colSpan: 4
                                         },
                                         {
                                             label: {
-                                                text: 'VN Description'
+                                                text: 'Mô tả nhóm VN'
                                             },
                                             dataField: 'vnDescription',
                                             colSpan: 4,
@@ -338,7 +382,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '60px',
                                                     onValueChanged: function (e) {
-                                                        originItem["vnDescription"] = e.value;
+                                                        categoryItem["vnDescription"] = e.value;
                                                     }
                                                 });
 
@@ -347,7 +391,7 @@
                                         },
                                         {
                                             label: {
-                                                text: 'EN Description'
+                                                text: 'Mô tả nhóm EN'
                                             },
                                             dataField: 'enDescription',
                                             colSpan: 4,
@@ -358,7 +402,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '60px',
                                                     onValueChanged: function (e) {
-                                                        originItem["enDescription"] = e.value;
+                                                        categoryItem["enDescription"] = e.value;
                                                     }
                                                 });
 
@@ -367,19 +411,19 @@
                                         },
                                         {
                                             label: {
-                                                text: 'Tags'
+                                                text: 'Từ khóa'
                                             },
                                             dataField: 'tag',
                                             colSpan: 4,
                                             editorType: 'dxTextArea',
-                                            helpText: 'Example: tag1, tag2, tag3',
+                                            helpText: 'Ví dụ: từ khóa 1, từ khóa 2...',
                                             template: function (data, itemElement) {
                                                 var textArea = $("<div>");
                                                 textArea.dxTextArea({
                                                     value: data.editorOptions.value,
                                                     height: '60px',
                                                     onValueChanged: function (e) {
-                                                        originItem["tag"] = e.value;
+                                                        categoryItem["tag"] = e.value;
                                                     }
                                                 });
 
@@ -389,12 +433,12 @@
                                     ]
                                 },
                                 {
-                                    title: 'Other information',
+                                    title: 'Thông tin khác',
                                     colCount: 4,
                                     items: [
                                         {
                                             label: {
-                                                text: 'Thumbnail'
+                                                text: 'Ảnh minh họa'
                                             },
                                             dataField: 'thumbnail',
                                             colSpan: 4
@@ -408,8 +452,8 @@
                                             template: function (data, itemElement) {
                                                 var fileUploader = $("<div>");
                                                 fileUploader.dxFileUploader({
-                                                    selectButtonText: 'Select file',
-                                                    labelText: 'Drop file here',
+                                                    selectButtonText: 'Chọn file ảnh',
+                                                    labelText: 'Kéo thả ảnh vào đây',
                                                     multiple: false,
                                                     accept: 'image/*'
                                                 });
@@ -420,7 +464,7 @@
                                         { itemType: 'empty', colSpan: 4 },
                                         {
                                             label: {
-                                                text: 'Rank'
+                                                text: 'Thứ tự'
                                             },
                                             dataField: 'rank',
                                             editorType: 'dxNumberBox',
@@ -436,10 +480,10 @@
                                             template: function (data, itemElement) {
                                                 var checkBox = $("<div>");
                                                 checkBox.dxCheckBox({
-                                                    text: 'In active?',
+                                                    text: 'Đang theo dõi?',
                                                     value: data.editorOptions.value,
                                                     onValueChanged: function (e) {
-                                                        originItem["inActive"] = e.value;
+                                                        categoryItem["inActive"] = e.value;
                                                     }
                                                 });
 
@@ -448,7 +492,7 @@
                                         },
                                         {
                                             label: {
-                                                text: 'Note'
+                                                text: 'Ghi chú'
                                             },
                                             dataField: 'note',
                                             colSpan: 4,
@@ -459,7 +503,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '80px',
                                                     onValueChanged: function (e) {
-                                                        originItem["note"] = e.value;
+                                                        categoryItem["note"] = e.value;
                                                     }
                                                 });
 
@@ -480,41 +524,41 @@
     }
 
     self.openForm = function (d, o) {
-        $("#popOrigin").dxPopup("instance").option('contentTemplate', function (c) {
+        $("#popCategory").dxPopup("instance").option('contentTemplate', function (c) {
             c.append(self.getForm(d));
         });
-        $("#popOrigin").dxPopup("instance").show();
+        $("#popCategory").dxPopup("instance").show();
     };
 
     self.closeForm = function () {
-        $("#popOrigin").dxPopup("instance").hide();
+        $("#popCategory").dxPopup("instance").hide();
     }
     
     self.saveData = function (c){
-        if ($('#originForm').dxForm("instance").validate().isValid) {
-            var isInsert = originItem.originId === undefined;
+        if ($('#categoryForm').dxForm("instance").validate().isValid) {
+            var isInsert = categoryItem.categoryId === undefined;
             var isCanSave = true;
 
             if (isInsert) {
-                $.each(origins, function () {
-                    if (this.originCode === originItem["originCode"]) {
-                        showMessage(false, 'Duplicate origin information. Please try again!');
+                $.each(categories, function () {
+                    if (this.categoryCode === categoryItem["categoryCode"]) {
+                        showMessage(false, 'Duplicate category information. Please try again!');
                         isCanSave = false;
                         return false;
                     }
                 });
             }
             else {
-                $.each(origins, function () {
-                    if (this.originCode === originItem["originCode"] && this.originId !== originItem["originId"]) {
-                        showMessage(false, 'Duplicate origin information. Please try again! update');
+                $.each(categories, function () {
+                    if (this.categoryCode === categoryItem["categoryCode"] && this.categoryId !== categoryItem["categoryId"]) {
+                        showMessage(false, 'Duplicate category information. Please try again! update');
                         isCanSave = false;
                         return false;
                     }
                 });
             }
             if (isCanSave) {
-                var _data = ko.toJSON(originItem);
+                var _data = ko.toJSON(categoryItem);
                 $.ajax({
                     type: 'POST',
                     url: [url, '/', isInsert ? 'add' : 'edit'].join(''),

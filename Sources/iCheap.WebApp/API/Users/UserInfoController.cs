@@ -20,7 +20,7 @@ namespace iCheap.WebApp.API
             string username, 
             string password)
         {
-            return Ok(BaseHelpers.CreateResponse(null, UserRepository.UserLogin(username, password)));
+            return Ok(BaseHelpers.CreateResponse(UserRepository.UserLogin(username, password)));
         }
     }
 }

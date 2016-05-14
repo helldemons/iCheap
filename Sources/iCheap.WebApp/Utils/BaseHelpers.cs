@@ -11,7 +11,7 @@ namespace iCheap.WebApp
     public class BaseHelpers
     {
         public static List<NavItem> GetNavItemList(
-            UrlHelper urlHelper, 
+            UrlHelper urlHelper,
             string jsonPath)
         {
             List<NavItem> result = new List<NavItem>();
@@ -28,8 +28,8 @@ namespace iCheap.WebApp
         }
 
         public static Response<T> CreateResponse<T>(
-            string message,
-            T data)
+            T data,
+            string message = null)
         {
             var status = string.IsNullOrEmpty(message);
 
@@ -39,10 +39,16 @@ namespace iCheap.WebApp
                 StatusCode = System.Net.HttpStatusCode.OK,
                 ErrMess = string.IsNullOrEmpty(message) ? null : message,
             };
-            if (!data.Equals(DBNull.Value))
+            if (data != null && !data.Equals(DBNull.Value))
                 result.Data = data;
 
             return result;
         }
+    }
+
+    public class ResultItem
+    {
+        public bool Status { get; set; }
+        public string Message { get; set; }
     }
 }

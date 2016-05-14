@@ -1,19 +1,19 @@
 ﻿$(function () {
     var self = this;
-    var origins = []
-    var originItem = {};
+    var brands = []
+    var brandItem = {};
     
     self.loadData = function (){
         $.getJSON(url, function (response) {
-            origins = response.data;
-            $('#grdOrigin').dxDataGrid('instance').option('dataSource', origins);
+            brands = response.data;
+            $('#grdBrand').dxDataGrid('instance').option('dataSource', brands);
         });
     };
     
     self.init = function () {
-        self.popupDetail = $("#popOrigin").dxPopup({
+        self.popupDetail = $("#popBrand").dxPopup({
             fullScreen: false,
-            title: 'Origin Detail',
+            title: 'Brand Detail',
             height: '80%',
             width: '90%',
             buttons: [
@@ -35,18 +35,18 @@
                 {
                     toolbar: 'bottom', location: 'before', widget: 'button', options: {
                         text: 'Cancel', onClick: function () {
-                            $("#popOrigin").dxPopup("instance").hide();
+                            $("#popBrand").dxPopup("instance").hide();
                         }
                     }
                 }
             ],
             closeOnOutsideClick: function (e) {
-                return e.target !== $("#popOrigin").get()[0];
+                return e.target !== $("#popBrand").get()[0];
             }
         }).dxPopup("instance");
 
-        self.dataGrid = $("#grdOrigin").dxDataGrid({
-            dataSource: origins,
+        self.dataGrid = $("#grdBrand").dxDataGrid({
+            dataSource: brands,
             allowColumnReordering: true,
             allowColumnResizing: true,
             columnAutoWidth: true,
@@ -62,7 +62,7 @@
             onContentReady: function () {
                 $("#addNewButton").remove();
                 $("#reloadButton").remove();
-                $("#grdOrigin").find('.dx-datagrid-header-panel')
+                $("#grdBrand").find('.dx-datagrid-header-panel')
                     .append($("<div id='reloadButton'>").dxButton({
                         icon: 'refresh',
                         onClick: function () {
@@ -109,7 +109,7 @@
                 },
                 {
                     width: '20%',
-                    dataField: 'originCode',
+                    dataField: 'brandCode',
                     caption: 'Code',
                     dataType: 'string',
                     cellTemplate: function (container, options) {
@@ -117,7 +117,7 @@
                         .text(options.text)
                         .css({ "text-decoration": "underline", "font-weight": "bold" })
                         .on('click', function () {
-                            $.getJSON([url , '/', options.data.originId].join(''), function (response) {
+                            $.getJSON([url , '/', options.data.brandId].join(''), function (response) {
                                 self.openForm(response.data);
                             });
                         })
@@ -175,19 +175,19 @@
     };
 
     self.getForm = function (d) {
-        originItem = d;
-        var form = $("<div id='originForm'>").dxForm({
-            formData: originItem,
+        brandItem = d;
+        var form = $("<div id='brandForm'>").dxForm({
+            formData: brandItem,
             labelLocation: 'left',
             showOptionalMark: '*',
             optionalMark: '',
             scrollingEnabled: true,
             onFieldDataChanged: function (model) {
-                originItem[model.dataField] = model.value;
+                brandItem[model.dataField] = model.value;
             },
             customizeItem: function (item) {
                 switch (item.dataField) {
-                    case "originCode":
+                    case "brandCode":
                     case "vnName":
                     case "enName":
                     case "vnRewriteUrl":
@@ -206,18 +206,18 @@
                     items: [
                         {
                             label: {
-                                text: 'Origin code'
+                                text: 'Brand code'
                             },
-                            dataField: 'originCode',
+                            dataField: 'brandCode',
                             isRequired: true,
                             editorType: 'dxTextBox',
                             template: function (data, itemElement) {
-                                var textBox = $("<div id='originCode'>");
+                                var textBox = $("<div id='brandCode'>");
                                 textBox.dxTextBox({
                                     value: data.editorOptions.value,
                                     onValueChanged: function (e) {
-                                        d["originCode"] = getDataCode(e.value);
-                                        $("#originCode").dxTextBox("instance").option("value", getDataCode(e.value));
+                                        d["brandCode"] = getDataCode(e.value);
+                                        $("#brandCode").dxTextBox("instance").option("value", getDataCode(e.value));
                                     }
                                 });
 
@@ -278,8 +278,8 @@
                                 textBox.dxTextBox({
                                     value: data.editorOptions.value,
                                     onValueChanged: function (e) {
-                                        originItem["enName"] = e.value;
-                                        originItem["enRewriteUrl"] = getRewriteUrl(e.value);
+                                        brandItem["enName"] = e.value;
+                                        brandItem["enRewriteUrl"] = getRewriteUrl(e.value);
                                         $("#enRewriteUrl").dxTextBox("instance").option("value", getRewriteUrl(e.value));
                                     }
                                 });
@@ -338,7 +338,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '60px',
                                                     onValueChanged: function (e) {
-                                                        originItem["vnDescription"] = e.value;
+                                                        brandItem["vnDescription"] = e.value;
                                                     }
                                                 });
 
@@ -358,7 +358,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '60px',
                                                     onValueChanged: function (e) {
-                                                        originItem["enDescription"] = e.value;
+                                                        brandItem["enDescription"] = e.value;
                                                     }
                                                 });
 
@@ -379,7 +379,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '60px',
                                                     onValueChanged: function (e) {
-                                                        originItem["tag"] = e.value;
+                                                        brandItem["tag"] = e.value;
                                                     }
                                                 });
 
@@ -439,7 +439,7 @@
                                                     text: 'In active?',
                                                     value: data.editorOptions.value,
                                                     onValueChanged: function (e) {
-                                                        originItem["inActive"] = e.value;
+                                                        brandItem["inActive"] = e.value;
                                                     }
                                                 });
 
@@ -459,7 +459,7 @@
                                                     value: data.editorOptions.value,
                                                     height: '80px',
                                                     onValueChanged: function (e) {
-                                                        originItem["note"] = e.value;
+                                                        brandItem["note"] = e.value;
                                                     }
                                                 });
 
@@ -480,41 +480,41 @@
     }
 
     self.openForm = function (d, o) {
-        $("#popOrigin").dxPopup("instance").option('contentTemplate', function (c) {
+        $("#popBrand").dxPopup("instance").option('contentTemplate', function (c) {
             c.append(self.getForm(d));
         });
-        $("#popOrigin").dxPopup("instance").show();
+        $("#popBrand").dxPopup("instance").show();
     };
 
     self.closeForm = function () {
-        $("#popOrigin").dxPopup("instance").hide();
+        $("#popBrand").dxPopup("instance").hide();
     }
     
     self.saveData = function (c){
-        if ($('#originForm').dxForm("instance").validate().isValid) {
-            var isInsert = originItem.originId === undefined;
+        if ($('#brandForm').dxForm("instance").validate().isValid) {
+            var isInsert = brandItem.brandId === undefined;
             var isCanSave = true;
 
             if (isInsert) {
-                $.each(origins, function () {
-                    if (this.originCode === originItem["originCode"]) {
-                        showMessage(false, 'Duplicate origin information. Please try again!');
+                $.each(brands, function () {
+                    if (this.brandCode === brandItem["brandCode"]) {
+                        showMessage(false, 'Duplicate brand information. Please try again!');
                         isCanSave = false;
                         return false;
                     }
                 });
             }
             else {
-                $.each(origins, function () {
-                    if (this.originCode === originItem["originCode"] && this.originId !== originItem["originId"]) {
-                        showMessage(false, 'Duplicate origin information. Please try again! update');
+                $.each(brands, function () {
+                    if (this.brandCode === brandItem["brandCode"] && this.brandId !== brandItem["brandId"]) {
+                        showMessage(false, 'Duplicate brand information. Please try again! update');
                         isCanSave = false;
                         return false;
                     }
                 });
             }
             if (isCanSave) {
-                var _data = ko.toJSON(originItem);
+                var _data = ko.toJSON(brandItem);
                 $.ajax({
                     type: 'POST',
                     url: [url, '/', isInsert ? 'add' : 'edit'].join(''),

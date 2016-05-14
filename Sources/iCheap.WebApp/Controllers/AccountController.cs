@@ -98,7 +98,7 @@ namespace iCheap.WebApp.Controllers
                 serializeModel.Role = UserRole.User;
                 returnUrl = urlHelper.Action("Index", "Home");
             }
-            serializeModel.UserId = user.UserID + string.Empty;
+            serializeModel.UserId = user.UserID ?? 0;
             serializeModel.Username = user.Username;
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();

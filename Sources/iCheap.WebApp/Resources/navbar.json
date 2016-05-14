@@ -4,6 +4,20 @@
         "controller": "Origin",
         "icon": "fa-home",
         "isDropdown": false,
-        "name": "Origin"
+        "name": "Xuất Xứ"
+    },
+    {
+        "action": "Index",
+        "controller": "Brand",
+        "icon": "fa-home",
+        "isDropdown": false,
+        "name": "Thương Hiệu"
+    },
+    {
+        "action": "Index",
+        "controller": "Category",
+        "icon": "fa-home",
+        "isDropdown": false,
+        "name": "Nhóm Hàng Hóa"
     }
 ]

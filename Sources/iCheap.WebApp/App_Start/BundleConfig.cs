@@ -49,7 +49,7 @@ namespace iCheap.WebApp
                         "~/assets/admin/Content/app.css",
                         "~/assets/admin/Content/themify-icons.css",
                         "~/assets/admin/Content/dx.common.css",
-                        "~/assets/admin/Content/dx.light.css"));
+                        "~/assets/admin/Content/dx.light.compact.css"));
         }
     }
 }

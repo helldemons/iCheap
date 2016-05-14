@@ -4,7 +4,7 @@ namespace iCheap.Models
 {
     public partial class Categories : BaseModel
     {
-        [JsonProperty(PropertyName = "categoryID", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "categoryId", NullValueHandling = NullValueHandling.Ignore)]
         public int? CategoryID { get; set; }
 
         [JsonProperty(PropertyName = "categoryCode", NullValueHandling = NullValueHandling.Ignore)]
@@ -34,7 +34,7 @@ namespace iCheap.Models
         [JsonProperty(PropertyName = "enDescription", NullValueHandling = NullValueHandling.Ignore)]
         public string ENDescription { get; set; }
 
-        [JsonProperty(PropertyName = "parentID", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "parentId", NullValueHandling = NullValueHandling.Ignore)]
         public int? ParentID { get; set; }
 
         [JsonProperty(PropertyName = "level", NullValueHandling = NullValueHandling.Ignore)]
@@ -57,5 +57,8 @@ namespace iCheap.Models
 
         [JsonProperty(PropertyName = "inActive", NullValueHandling = NullValueHandling.Ignore)]
         public bool? InActive { get; set; }
+
+        [JsonProperty(PropertyName = "parent", NullValueHandling = NullValueHandling.Ignore)]
+        public Categories Parent { get; set; }
     }
 }

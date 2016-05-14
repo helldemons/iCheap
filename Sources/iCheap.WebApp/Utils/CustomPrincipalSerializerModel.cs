@@ -6,6 +6,6 @@ namespace iCheap.WebApp
     {
         public string Username { get; set; }
         public UserRole Role { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
     }
 }

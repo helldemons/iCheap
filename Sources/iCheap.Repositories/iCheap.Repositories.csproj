@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseConstants.cs" />
+    <Compile Include="Base\MapHelper.cs" />
     <Compile Include="Base\SQLHelper.cs" />
     <Compile Include="Blogs\BlogCategoryRepository.cs" />
     <Compile Include="Blogs\BlogRepository.cs" />
