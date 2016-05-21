@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCheap.Models", "iCheap.Models\iCheap.Models.csproj", "{28B98576-4EC3-4B5C-945B-CA1B686DF80D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{76B91F27-26BB-41F2-8D40-158D0684BA3E}"
+	ProjectSection(SolutionItems) = preProject
+		iCheap.WebApp\Models\WarrantyType.cs = iCheap.WebApp\Models\WarrantyType.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access", "Data Access", "{AD66F2C9-97A5-4F54-A7FF-438054DC4323}"
 EndProject

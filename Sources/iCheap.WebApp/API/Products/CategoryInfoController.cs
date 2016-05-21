@@ -1,6 +1,8 @@
 ﻿using iCheap.Models;
 using iCheap.Repositories;
+using System.Collections.Generic;
 using System.Web.Http;
+using System.Linq;
 
 namespace iCheap.WebApp.API
 {
@@ -19,6 +21,13 @@ namespace iCheap.WebApp.API
         public IHttpActionResult GetAllCategories()
         {
             return Ok(BaseHelpers.CreateResponse(CategoryRepository.GetAllCategories()));
+        }
+
+        [Route("combobox")]
+        [HttpGet]
+        public IHttpActionResult GetAllCategoriesMenu()
+        {
+            return Ok(BaseHelpers.CreateResponse(CategoryRepository.GetCategoryCombobox()));
         }
 
         [Route("{categoryId}")]

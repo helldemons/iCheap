@@ -13,5 +13,31 @@ namespace iCheap.Repositories
 
             return category;
         }
+
+        public static BlogCategories MapBlogCategory(
+            BlogCategories blogCategory,
+            BlogCategories parent)
+        {
+            if (blogCategory != null)
+                blogCategory.Parent = parent;
+
+            return blogCategory;
+        }
+
+        public static Products MapProducts(
+            Products product,
+            Origins origin,
+            Brands brand,
+            Categories category)
+        {
+            if (product != null)
+            {
+                product.Brand = brand;
+                product.Origin = origin;
+                product.Category = category;
+            }
+
+            return product;
+        }
     }
 }

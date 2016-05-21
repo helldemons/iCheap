@@ -10,9 +10,11 @@ namespace iCheap.Repositories
     {
         IEnumerable<Products> GetAllProducts();
         Products GetProductById(int ProductId);
+        IEnumerable<Products> GetProductByProductFilter(Products condition);
         string InsertProduct(int userId, Products Product);
         string UpdateProduct(int userId, Products Product);
         string DeleteProduct(int userId, string ProductIds);
+        string UpdateViewCount(int productId);
     }
 
     public class ProductRepository : IProductRepository
@@ -23,7 +25,7 @@ namespace iCheap.Repositories
         {
             var param = SQLHelper.GetBasicDynamicParamters(DBNull.Value, action: BaseConstants.GET_ALL_ITEMS);
 
-            return SQLHelper.QuerySP<Products>(storedName, param);
+            return SQLHelper.QuerySP<Products, Origins, Brands, Categories>(storedName, param, delegateFunc: MapHelper.MapProducts, splitOn: "OriginID,BrandID,CategoryID");
         }
 
         public Products GetProductById(int ProductId)
@@ -31,11 +33,19 @@ namespace iCheap.Repositories
             var param = SQLHelper.GetBasicDynamicParamters(ProductId, action: BaseConstants.GET_ITEM_BY_ID);
             param.Add("ProductID", ProductId, DbType.Int32);
 
-            var Products = SQLHelper.QuerySP<Products>(storedName, param);
+            var Products = SQLHelper.QuerySP<Products, Origins, Brands, Categories>(storedName, param, delegateFunc: MapHelper.MapProducts, splitOn: "OriginID,BrandID,CategoryID");
             if (Products != null && Products.Any())
                 return Products.Single();
 
             return null;
+        }
+
+        public IEnumerable<Products> GetProductByProductFilter(Products condition)
+        {
+            var param = SQLHelper.GetBasicDynamicParamters(condition, action: "GetProductByProductFilter");
+            param.Add("CategoryId", condition.CategoryID, DbType.Int32);
+
+            return SQLHelper.QuerySP<Products, Origins, Brands, Categories>(storedName, param, delegateFunc: MapHelper.MapProducts, splitOn: "OriginID,BrandID,CategoryID");
         }
 
         public string InsertProduct(int userId, Products product)
@@ -54,10 +64,6 @@ namespace iCheap.Repositories
             param.Add("ENFullInformation", product.ENFullInformation, DbType.String);
             param.Add("Available", product.Available, DbType.Boolean);
             param.Add("SoldQuantity", product.SoldQuantity, DbType.Int32);
-            param.Add("ViewCount", product.ViewCount, DbType.Int32);
-            param.Add("VoteCount", product.VoteCount, DbType.Int32);
-            param.Add("VoteRatio", product.VoteRatio, DbType.Decimal);
-            param.Add("LikeCount", product.LikeCount, DbType.Int32);
             param.Add("InNew", product.InNew, DbType.Boolean);
             param.Add("InHot", product.InHot, DbType.Boolean);
             param.Add("InBestSale", product.InBestSale, DbType.Boolean);
@@ -70,8 +76,9 @@ namespace iCheap.Repositories
             param.Add("InWarranty", product.InWarranty, DbType.Boolean);
             param.Add("Warranty", product.Warranty, DbType.Int32);
             param.Add("WarrantyType", product.WarrantyType, DbType.Int32);
-            param.Add("OriginID", product.OriginID, DbType.Int32);
-            param.Add("BrandID", product.BrandID, DbType.Int32);
+            param.Add("OriginID", product.Origin == null ? null : product.Origin.OriginID, DbType.Int32);
+            param.Add("BrandID", product.Brand == null ? null : product.Brand.BrandID, DbType.Int32);
+            param.Add("CategoryID", product.Category == null ? null : product.Category.CategoryID, DbType.Int32);
             param.Add("DiscountQuantity", product.DiscountQuantity, DbType.Int32);
             param.Add("DiscountRate", product.DiscountRate, DbType.Decimal);
             param.Add("DiscountAmount", product.DiscountAmount, DbType.Decimal);
@@ -110,10 +117,6 @@ namespace iCheap.Repositories
             param.Add("ENFullInformation", product.ENFullInformation, DbType.String);
             param.Add("Available", product.Available, DbType.Boolean);
             param.Add("SoldQuantity", product.SoldQuantity, DbType.Int32);
-            param.Add("ViewCount", product.ViewCount, DbType.Int32);
-            param.Add("VoteCount", product.VoteCount, DbType.Int32);
-            param.Add("VoteRatio", product.VoteRatio, DbType.Decimal);
-            param.Add("LikeCount", product.LikeCount, DbType.Int32);
             param.Add("InNew", product.InNew, DbType.Boolean);
             param.Add("InHot", product.InHot, DbType.Boolean);
             param.Add("InBestSale", product.InBestSale, DbType.Boolean);
@@ -126,8 +129,9 @@ namespace iCheap.Repositories
             param.Add("InWarranty", product.InWarranty, DbType.Boolean);
             param.Add("Warranty", product.Warranty, DbType.Int32);
             param.Add("WarrantyType", product.WarrantyType, DbType.Int32);
-            param.Add("OriginID", product.OriginID, DbType.Int32);
-            param.Add("BrandID", product.BrandID, DbType.Int32);
+            param.Add("OriginID", product.Origin == null ? null : product.Origin.OriginID, DbType.Int32);
+            param.Add("BrandID", product.Brand == null ? null : product.Brand.BrandID, DbType.Int32);
+            param.Add("CategoryID", product.Category == null ? null : product.Category.CategoryID, DbType.Int32);
             param.Add("DiscountQuantity", product.DiscountQuantity, DbType.Int32);
             param.Add("DiscountRate", product.DiscountRate, DbType.Decimal);
             param.Add("DiscountAmount", product.DiscountAmount, DbType.Decimal);
@@ -154,6 +158,20 @@ namespace iCheap.Repositories
             var isDeleteList = ProductIds.Contains("$");
             var param = SQLHelper.GetBasicDynamicParamters(ProductIds, userId, isDeleteList ? BaseConstants.DELETE_LIST_COMMAND : BaseConstants.DELETE_COMMAND);
             param.Add(isDeleteList ? "ProductIDs" : "ProductID", ProductIds, DbType.String);
+
+            var outParam = SQLHelper.CreateOutParams();
+            int result = SQLHelper.ExecuteSP(storedName, param, outParam);
+
+            if (result != BaseConstants.EXCEPTION_NUMBER)
+                return outParam.Get<string>(BaseConstants.RETURN_MESS_SQL);
+
+            return null;
+        }
+
+        public string UpdateViewCount(int productId)
+        {
+            var param = SQLHelper.GetBasicDynamicParamters(productId, action: "UpdateViewCount");
+            param.Add("ProductID", productId, DbType.Int32);
 
             var outParam = SQLHelper.CreateOutParams();
             int result = SQLHelper.ExecuteSP(storedName, param, outParam);

@@ -13,6 +13,7 @@
             categoryData = $.grep(categories, function (c) {
                 return c.parentId === 0;
             });
+            categoryData.unshift({ categoryId: 0, vnName: null, enName: null });
             if ($('#cboCategory').dxSelectBox('instance') !== undefined)
                 $('#cboCategory').dxSelectBox('instance').option('dataSource', categoryData);
         });
@@ -99,12 +100,12 @@
                 highlightSearchText: true,
                 placeholder: 'Tìm kiếm...'
             },
-            paging: { pageSize: 20 },
+            paging: { pageSize: 15 },
             pager: {
                 showNavigationButtons: true,
                 showPageSizeSelector: true,
                 showInfo: true,
-                allowedPageSizes: [10, 20, 50]
+                allowedPageSizes: [10, 15, 30, 50]
             },
             showBorders: true,
             showRowLines: true,
@@ -196,6 +197,16 @@
 
     self.getForm = function (d) {
         categoryItem = d;
+
+        categoryData = [];
+        if (categories !== undefined && categories.length > 0)
+            categoryData = $.grep(categories, function (c) {
+                if (d.categoryId !== undefined)
+                    return c.parentId === 0 && c.categoryId !== d.categoryId;
+                else return c.parentId === 0;
+            });
+        categoryData.unshift({ categoryId: 0, vnName: null, enName: null });
+
         var form = $("<div id='categoryForm'>").dxForm({
             formData: categoryItem,
             labelLocation: 'left',

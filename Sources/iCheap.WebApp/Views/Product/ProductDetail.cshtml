@@ -1,0 +1,293 @@
+﻿@using iCheap.Models
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    IEnumerable<Products> relatedProducts = ViewBag.RelatedProducts as IEnumerable<Products>;
+}
+
+<!-- Breadcrumbs -->
+<section class="container">
+    <nav class="breadcrumbs"> <a href="index.html">Trang chủ</a> <span class="divider">›</span> 
+    @if (Model.Category.ParentID == 0)
+    {
+        <a href="@Url.Action("CategoryDetail", "Category", new { id = Model.Category.CategoryID, url = Model.Category.VNRewriteUrl })">@Model.Category.VNName</a>
+    }
+    else
+    {
+        <a href="@Url.Action("CategoryDetail", "Category", new { id = Model.Category.Parent.CategoryID, url = Model.Category.Parent.VNRewriteUrl })">@Model.Category.Parent.VNName</a> 
+        <span class="divider">›</span> 
+        <a href="@Url.Action("CategoryDetail", "Category", new { id = Model.Category.CategoryID, url = Model.Category.VNRewriteUrl })">@Model.Category.VNName</a>
+    }
+        <span class="divider">›</span> @Model.VNName
+    </nav>
+</section>
+<!-- //end Breadcrumbs -->
+<!-- Small Previews -->
+<section class="container hidden-xs">
+    <div class="small-previews">
+        <a href="#" class="prev"></a>
+        <div class="small-preview prev"><img src="~/assets/client/images/products/small-preview1.jpg" alt="" class="img-responsive"></div>
+        <a href="#" class="next"></a>
+        <div class="small-preview next"><img src="~/assets/client/images/products/small-preview2.jpg" alt="" class="img-responsive"></div>
+    </div>
+</section>
+<!-- //end Small Previews -->
+<!-- Small Previews -->
+<section class="container hidden-xs">
+    <div class="small-previews">
+        <a href="#" class="prev"></a>
+        <div class="small-preview prev"><img src="~/assets/client/images/products/small-preview1.jpg" alt="" class="img-responsive"></div>
+        <a href="#" class="next"></a>
+        <div class="small-preview next"><img src="~/assets/client/images/products/small-preview2.jpg" alt="" class="img-responsive"></div>
+    </div>
+</section>
+<!-- //end Small Previews -->
+<!-- One column content -->
+<section class="container">
+
+    <!-- Product view -->
+    <div class="product-view row">
+        <div class="col-sm-6 col-md-5 col-lg-5">
+            <div class="hidden-xs flexslider-thumb-vertical-outer">
+                <div class="flexslider flexslider-thumb-vertical vertical min">
+                    <ul class="previews-list slides">
+                        @foreach (var image in Model.ImageArray)
+                        {
+                            <li><img class='cloudzoom-gallery' alt="#" src="@image" data-cloudzoom="useZoom: '.cloudzoom', image: '@image', zoomImage: '@image', autoInside : 991"></li>
+                        }
+                        <li><a class="various fancybox.iframe" href="http://www.youtube.com/embed/L9szn1QQfas?autoplay=1"><img alt="#" class='fancybox-video' src="http://localhost:30008/assets/client/images/video.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="large-image vertical hidden-xs"> <img alt="#" class="cloudzoom" src="@Model.ImageArray[0]" data-cloudzoom="zoomSizeMode:'image', zoomImage: '@Model.ImageArray[0]', autoInside : 991" /> </div>
+            <div class="flexslider flexslider-large visible-xs">
+                <ul class="slides">
+                    @foreach (var image in Model.ImageArray)
+                    {
+                        <li><img class="img-responsive animate scale" src="@image" alt=""></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+
+            <!-- Product label -->
+            <div class="product-label">
+                <div class="box-wrap">
+                    <div class="box-wrap-top"></div>
+                    <div class="box-wrap-bot"></div>
+                    <div class="box-wrap-center"></div>
+                    <div class="box">
+                        <div class="box-content">
+                            <h2>@Model.VNName</h2>
+                            <span class="price old">@BaseHelpers.ConvertPriceToString(Model.MarketPrice)</span> 
+                            <span class="price new">@BaseHelpers.ConvertPriceToString(Model.Price)</span> <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //end Product label -->
+            <!-- Description -->
+            <div class="product-description">
+                <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span>
+                <form>
+                    <div class="option">
+                        <b>Số lượng:</b>
+                        <div class="input-group quantity-control">
+                            <span class="input-group-addon">&minus;</span>
+                            <input type="text" class="form-control" value="1">
+                            <span class="input-group-addon">+</span>
+                        </div>
+                    </div>
+                    <div class="clearfix visible-xs"></div>
+                    <button class="btn btn-mega btn-lg" type="button">Đặt mua ngay</button>
+                </form>
+                <div class="panel-group accordion-simple" id="product-accordion">
+                    <div class="panel">
+                        <div class="panel-heading"> <a data-toggle="collapse" data-parent="#product-accordion" href="#product-info"> <span class="arrow-down icon-arrow-down-4"></span> <span class="arrow-up icon-arrow-up-4"></span><strong>Thông tin chung</strong></a></div>
+                        <div id="product-info" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <p>Thương hiệu: @Model.Brand.VNName</p>
+                                <p>Xuất xứ: @Model.Origin.VNName</p>
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.InWarranty)
+                    {
+                        <div class="panel">
+                            <div class="panel-heading"> <a data-toggle="collapse" data-parent="#product-accordion" href="#product-warranty" class="collapsed"> <span class="arrow-down icon-arrow-down-4"></span> <span class="arrow-up icon-arrow-up-4"></span><strong>Bảo hành</strong></a> </div>
+                            <div id="product-warranty" class="panel-collapse collapse">
+                                <div class="panel-body"> @Model.FullWarranty </div>
+                            </div>
+                        </div>
+                    }
+                </div>            
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style "> <a class="addthis_button_preferred_1"></a> <a class="addthis_button_preferred_2"></a> <a class="addthis_button_preferred_3"></a> <a class="addthis_button_preferred_4"></a> <a class="addthis_button_compact"></a> <a class="addthis_counter addthis_bubble_style"></a> </div>
+                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=etheme"></script>
+                <!-- AddThis Button END -->
+            </div>
+            <!-- //end Description -->
+        </div>
+        <!-- Related Products -->
+        <section class="col-sm-12 col-md-3 col-lg-3 slider-products  module">
+            <h3>Cùng danh mục</h3>
+            <div class="products-widget jcarousel-skin-previews vertical">
+                <ul class="slides">
+                    @foreach (var product in relatedProducts)
+                    {
+                        <li>
+                            <div class="product">
+                                <a href="@Url.Action("ProductDetail", "Product", new { id = product.ProductID, url = product.VNRewriteUrl })" class="preview-image"><img class="img-responsive product_activ" src="@product.Thumbnail" alt=""></a>
+                                <p class="name"><a href="@Url.Action("ProductDetail", "Product", new { id = product.ProductID, url = product.VNRewriteUrl })" class="preview-image">@product.VNName</a></p>
+                                <span class="rating"> 
+                                    <i class="icon-star-3"></i> 
+                                    <i class="icon-star-3"></i> 
+                                    <i class="icon-star-3"></i> 
+                                    <i class="icon-star-3"></i> 
+                                    <i class="icon-star-empty"></i> 
+                                </span>
+                                <span class="price new">@BaseHelpers.ConvertPriceToString(product.Price ?? 0)</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+        <!-- //end Related Products --> 
+    </div>
+    <!-- //end Product view -->
+    <!-- Tabs -->
+    <section class="producttab">
+        <div class="tabsslider">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#tab-1">Mô tả</a></li>
+                <li><a data-toggle="tab" href="#tab-2">Đánh giá</a></li>
+                <li><a data-toggle="tab" href="#tab-3">Tags</a></li>
+                <li><a data-toggle="tab" href="#tab-4">Bình luận</a></li>
+            </ul>
+            <a href="#" class="carousel-prev"></a><a href="#" class="carousel-next"></a>
+        </div>
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade active in">
+                @Model.VNFullInformation
+            </div>
+            <div id="tab-2" class="tab-pane fade">
+                <p>Curabitur convallis facilisis lorem. Vivamus euismod nulla vel nunc. Fusce tincidunt, justo congue egestas molestie, tortor tortor blandit erat, et scelerisque metus metus at ipsum. Maecenas tincidunt adipiscing tellus. Nunc tristique pede. Ut condimentum mattis est. Duis sit amet augue. </p>
+                <p>Vestibulum justo. Nulla mauris ipsum, convallis ut, vestibulum eu, tincidunt vel, nisi. Curabitur molestie euismod Mauris lacinia lectus sit amet felis. Aliquam erat volutpat. Nulla porttitor tortor pede. Aenean quam. Nulla neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. Mauris et ligula quis erat dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. </p>
+            </div>
+            <div id="tab-3" class="tab-pane fade">
+                <p>Curabitur convallis facilisis lorem. Vivamus euismod nulla vel nunc. Fusce tincidunt, justo congue egestas molestie, tortor tortor blandit erat, et scelerisque metus metus at ipsum. Maecenas tincidunt adipiscing tellus. Nunc tristique pede. Ut condimentum mattis est. Duis sit amet augue. </p>
+            </div>
+            <div id="tab-4" class="tab-pane fade">
+                <p>Vestibulum justo. Nulla mauris ipsum, convallis ut, vestibulum eu, tincidunt vel, nisi. Curabitur molestie euismod Mauris lacinia lectus sit amet felis. Aliquam erat volutpat. Nulla porttitor tortor pede. Aenean quam. Nulla neque purus, ullamcorper nec, eleifend at, fermentum ut, turpis. Mauris et ligula quis erat dignissim imperdiet. Integer ligula magna, dictum et, pulvinar non, ultricies ac, nibh. </p>
+            </div>
+        </div>
+    </section>
+    <!-- //end Tabs -->
+    <div class="line-divider"></div>
+    <!-- Upsell products -->
+    <section class="slider-products content-box">
+        <h3>Upsell Products</h3>
+        <!-- Products list -->
+        <div class="products-list-small">
+            <ul class="slides">
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-03-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-04-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-05-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-06-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-07-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-08-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-09-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-10-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-11-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-12-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-13-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-14-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-15-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-16-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-17-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-18-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-19-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-preview">
+                        <div class="preview animate scale"> <a href="#"><img src="~/assets/client/images/products/product-01-small.jpg" alt=""></a> <a href="_ajax_view-product.html" class="quick-view"> <span class="icon-zoom-in-2"></span> View </a> </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- //end Products list -->
+    </section>
+    <!-- //end Upsell products -->
+</section>
+<!-- //end Two columns content --> 

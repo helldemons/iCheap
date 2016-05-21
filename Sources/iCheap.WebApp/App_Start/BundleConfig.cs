@@ -8,6 +8,7 @@ namespace iCheap.WebApp
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            #region [Bundles Admin]
             bundles.Add(new ScriptBundle("~/admin/bundles/jquery").Include(
                         "~/assets/admin/Scripts/jquery-{version}.js"));
 
@@ -50,6 +51,7 @@ namespace iCheap.WebApp
                         "~/assets/admin/Content/themify-icons.css",
                         "~/assets/admin/Content/dx.common.css",
                         "~/assets/admin/Content/dx.light.compact.css"));
+            #endregion
         }
     }
 }

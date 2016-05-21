@@ -1,4 +1,7 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace iCheap.Models
 {
@@ -92,13 +95,16 @@ namespace iCheap.Models
         public int? Warranty { get; set; }
 
         [JsonProperty(PropertyName = "warrantyType", NullValueHandling = NullValueHandling.Ignore)]
-        public int? WarrantyType { get; set; }
+        public WarrantyType? WarrantyType { get; set; }
 
-        [JsonProperty(PropertyName = "originID", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "originId", NullValueHandling = NullValueHandling.Ignore)]
         public int? OriginID { get; set; }
 
-        [JsonProperty(PropertyName = "brandID", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyName = "brandId", NullValueHandling = NullValueHandling.Ignore)]
         public int? BrandID { get; set; }
+
+        [JsonProperty(PropertyName = "categoryId", NullValueHandling = NullValueHandling.Ignore)]
+        public int? CategoryID { get; set; }
 
         [JsonProperty(PropertyName = "discountQuantity", NullValueHandling = NullValueHandling.Ignore)]
         public int? DiscountQuantity { get; set; }
@@ -138,5 +144,38 @@ namespace iCheap.Models
 
         [JsonProperty(PropertyName = "brand", NullValueHandling = NullValueHandling.Ignore)]
         public Brands Brand { get; set; }
+
+        [JsonProperty(PropertyName = "category", NullValueHandling = NullValueHandling.Ignore)]
+        public Categories Category { get; set; }
+
+        public int RateCount
+        {
+            get
+            {
+                return (new Random().Next(10, 10000) % 5) + 1;
+            }
+        }
+
+        public string FullWarranty
+        {
+            get
+            {
+                return $"{ Warranty } { BaseHelper.GetDescription(WarrantyType).ToLower() }";
+            }
+        }
+
+        public string[] ImageArray
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Images))
+                    return new string[] { Thumbnail };
+                var tmp = $"<end>{ Images }</end>";
+                var result = Regex.Matches(tmp, @"(?<=(<end>|;)).*?(?=(;|</end>))", RegexOptions.Singleline).Cast<Match>().Select(m => m.Value).ToList();
+                result.Add(Thumbnail);
+
+                return result.ToArray();
+            }
+        }
     }
 }

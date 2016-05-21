@@ -1,31 +1,663 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- Services -->
+<section class="services-block hidden-xs">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-lg-4 divider-right"> <a href="index.html" class="item"> <span class="icon icon-airplane-2"></span> <span class="title">Free shipping</span> <span class="description">on orders over $200</span> </a> </div>
+        <div class="col-xs-12 col-sm-4 col-lg-4 divider-right"> <a href="index.html" class="item"> <span class="icon icon-clock"></span> <span class="title">30-day returns</span> <span class="description">moneyback guarantee</span> </a> </div>
+        <div class="col-xs-12 col-sm-4 col-lg-4"> <a href="index.html" class="item"> <span class="icon icon-umbrella "></span> <span class="title">24/7 Support </span> <span class="description">online consultations</span> </a> </div>
+    </div>
+</section>
+<!-- //end Services -->
+<!-- Featured Products -->
+<section class="content slider-products">
+    <h3>Sản phẩm nổi bật</h3>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <!-- Products list -->
+    <div class="row">
+        <div class="product-carousel">
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-03.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list right">
+                            <li><span class="label label-sale">SALE</span></li>
+                            <li><span class="label">-20%</span></li>
+                        </ul>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">Polly Top Notion</a></h3>
+                    <span class="price old">$54.22</span> <span class="price new">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-04.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list">
+                            <li><span class="label label-new">NEW</span></li>
+                        </ul>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">Raglan Sleeve Tee Maison Scotch</a></h3>
+                    <span class="price">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-05.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list right">
+                            <li><span class="label label-sale">SALE</span></li>
+                            <li><span class="label">-20%</span></li>
+                        </ul>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">Beyond Top NLY Trend</a></h3>
+                    <span class="price">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-06.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">White Fringed Chuck on Top</a></h3>
+                    <span class="price">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-03.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list right">
+                            <li><span class="label label-sale">SALE</span></li>
+                            <li><span class="label">-20%</span></li>
+                        </ul>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">Polly Top Notion</a></h3>
+                    <span class="price old">$54.22</span> <span class="price new">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-04.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list">
+                            <li><span class="label label-new">NEW</span></li>
+                        </ul>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">Raglan Sleeve Tee Maison Scotch</a></h3>
+                    <span class="price">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-05.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list right">
+                            <li><span class="label label-sale">SALE</span></li>
+                            <li><span class="label">-20%</span></li>
+                        </ul>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">Beyond Top NLY Trend</a></h3>
+                    <span class="price">$44.95</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="product-preview">
+                    <div class="preview animate scale">
+                        <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-06.jpg" width="270" height="328" alt=""></a>
+                        <ul class="product-controls-list right hide-right">
+                            <li class="top-out"></li>
+                            <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                            <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                            <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                        </ul>
+                        <a href="_ajax_view-product.html" class="quick-view hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                        <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                    </div>
+                    <h3 class="title"><a href="#">White Fringed Chuck on Top</a></h3>
+                    <span class="price">$44.95</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <!-- //end Products list -->
+    <!-- Product view compact -->
+    <div class="product-view-ajax">
+        <div class="ajax-loader progress progress-striped active">
+            <div class="progress-bar progress-bar-danger" role="progressbar"></div>
+        </div>
+        <div class="layar"></div>
+        <div class="product-view-container"> </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <!-- //end Product view compact -->
+</section>
+
+<!-- //end Featured Products -->
+<!-- Brands -->
+<section class="content">
+    <h3>Đối tác</h3>
+    <div class="brands carouFredSel row">
+        <div class="carouFredSel-controls">
+            <div class="carouFredSel-buttons"><a id="brands-carousel-prev" class="prev" href="#"></a><a id="brands-carousel-next" class="next" href="#"></a></div>
+        </div>
+        <div class="brands-carousel">
+            <ul class="slides">
+                <li><a href="#"><img src="~/assets/client/images/brand-themeforest.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-activeden.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-audiojungle.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-videohive.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-graphicriver.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-3docean.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-themeforest.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-activeden.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-audiojungle.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-videohive.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-graphicriver.png" alt=""></a></li>
+                <li><a href="#"><img src="~/assets/client/images/brand-3docean.png" alt=""></a></li>
+            </ul>
+        </div>
     </div>
-</div>
+</section>
+<!-- //end Brands -->
+<!-- Blog widget -->
+<section class="blog-widget parallax">
+    <div class="content">
+        <div class="posts flexslider">
+            <h3>Tin nổi bật</h3>
+            <ul class="slides">
+                <li>
+                    <div class="image-cell"><a href="blog.html"><img src="~/assets/client/images/temp/block-image-02-176x119.jpg" class="img-responsive animate scale" alt=""></a></div>
+                    <div class="offset-image">
+                        <h4><a href="blog.html">Integer vel nibh sit amet turpis vulputate aliquet</a></h4>
+                        <p> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> &nbsp;&nbsp; <a href="blog.html">5 Comments</a> </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas eu enim in lorem scelerisque auctor. </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="image-cell"><a href="blog.html"><img src="~/assets/client/images/temp/block-image-03-176x119.jpg" class="img-responsive animate scale" alt=""></a></div>
+                    <div class="offset-image">
+                        <h4><a href="blog.html">Ut euismod, turpis sollicitudin lobortis pellentesque libero massa dapibus dui</a></h4>
+                        <p> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> &nbsp;&nbsp; <a href="blog.html">5 Comments</a> </p>
+                        <p>Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas eu enim in lorem scelerisque auctor. Ut non erat. Suspendisse fermentum posuere lectus. Fusce vulputate nibh egestas orci. Aliquam lectus. Morbi eget dolor sit amet quam. </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="image-cell"><a href="blog.html"><img src="~/assets/client/images/temp/block-image-02-176x119.jpg" class="img-responsive animate scale" alt=""></a></div>
+                    <div class="offset-image">
+                        <h4><a href="blog.html">Integer vel nibh sit amet turpis vulputate aliquet</a></h4>
+                        <p> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> &nbsp;&nbsp; <a href="blog.html">5 Comments</a> </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet, nunc. Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas eu enim in lorem scelerisque auctor. </p>
+                    </div>
+                </li>
+                <li>
+                    <div class="image-cell"><a href="blog.html"><img src="~/assets/client/images/temp/block-image-03-176x119.jpg" class="img-responsive animate scale" alt=""></a></div>
+                    <div class="offset-image">
+                        <h4><a href="blog.html">Ut euismod, turpis sollicitudin lobortis pellentesque libero massa dapibus dui</a></h4>
+                        <p> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> &nbsp;&nbsp; <a href="blog.html">5 Comments</a> </p>
+                        <p>Ut sit amet turpis. In est arcu, sollicitudin eu, vehicula venenatis, tempor vitae, est. Praesent vitae dui. Morbi id tellus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas eu enim in lorem scelerisque auctor. Ut non erat. Suspendisse fermentum posuere lectus. Fusce vulputate nibh egestas orci. Aliquam lectus. Morbi eget dolor sit amet quam. </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //end Blog widget -->
+<!-- Products widgets -->
+<section class="content hidden-xs">
+    <div class="row">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <h3><a href="listing.html">bán chạy</a></h3>
+            <div class="products-widget jcarousel-skin-previews vertical">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-07-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-08-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-09-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">V Front Peplum Dress Club L</a></p>
+                            <span class="rating"> </span> <span class="price">$22.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-07-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-08-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-09-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">V Front Peplum Dress Club L</a></p>
+                            <span class="rating"> </span> <span class="price">$22.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <h3><a href="listing.html">Sản phẩm mới</a></h3>
+            <div class="products-widget jcarousel-skin-previews vertical">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-10-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$39.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-11-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-12-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Basic Cami Top River Island</a></p>
+                            <span class="rating"> </span> <span class="price">$9.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-10-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$39.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-11-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-12-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Basic Cami Top River Island</a></p>
+                            <span class="rating"> </span> <span class="price">$9.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <section class="col-sm-6 col-md-3 col-lg-3  slider-products module">
+            <h3>Đang giảm giá</h3>
+
+            <!-- Products list -->
+            <div class="row">
+                <div class="product-carousel">
+                    <div class="item">
+                        <div class="product-preview">
+                            <div class="preview animate scale">
+                                <a href="_ajax_view-product.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-17.jpg" width="350" height="425" alt=""></a>
+                                <ul class="product-controls-list right">
+                                    <li><span class="label label-sale">SALE</span></li>
+                                    <li><span class="label">-20%</span></li>
+                                </ul>
+                                <ul class="product-controls-list right hide-right">
+                                    <li class="top-out"></li>
+                                    <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                                    <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                                    <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                                </ul>
+                                <a href="_ajax_view-product-popup.html" class="quick-view  fancybox fancybox.ajax hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                                <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                            </div>
+                            <h3 class="title"><a href="#">Polly Top Notion</a></h3>
+                            <span class="price old">$54.22</span> <span class="price new">$44.95</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="product-preview">
+                            <div class="preview animate scale">
+                                <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-05.jpg" width="270" height="328" alt=""></a>
+                                <ul class="product-controls-list right">
+                                    <li><span class="label label-sale">SALE</span></li>
+                                    <li><span class="label">-20%</span></li>
+                                </ul>
+                                <ul class="product-controls-list right hide-right">
+                                    <li class="top-out"></li>
+                                    <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                                    <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                                    <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                                </ul>
+                                <a href="_ajax_view-product-popup.html" class="quick-view  fancybox fancybox.ajax hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                                <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                            </div>
+                            <h3 class="title"><a href="#">Beyond Top NLY Trend</a></h3>
+                            <span class="price">$44.95</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="product-preview">
+                            <div class="preview animate scale">
+                                <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-03.jpg" width="270" height="328" alt=""></a>
+                                <ul class="product-controls-list right">
+                                    <li><span class="label label-sale">SALE</span></li>
+                                    <li><span class="label">-20%</span></li>
+                                </ul>
+                                <ul class="product-controls-list right hide-right">
+                                    <li class="top-out"></li>
+                                    <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                                    <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                                    <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                                </ul>
+                                <a href="_ajax_view-product-popup.html" class="quick-view  fancybox fancybox.ajax hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                                <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                            </div>
+                            <h3 class="title"><a href="#">Polly Top Notion</a></h3>
+                            <span class="price old">$54.22</span> <span class="price new">$44.95</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="product-preview">
+                            <div class="preview animate scale">
+                                <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-05.jpg" width="270" height="328" alt=""></a>
+                                <ul class="product-controls-list right">
+                                    <li><span class="label label-sale">SALE</span></li>
+                                    <li><span class="label">-20%</span></li>
+                                </ul>
+                                <ul class="product-controls-list right hide-right">
+                                    <li class="top-out"></li>
+                                    <li><a href="#" class="circle"><span class="icon-heart"></span></a></li>
+                                    <li><a href="#" class="circle"><span class="icon-justice"></span></a></li>
+                                    <li><a href="#" class="cart"><span class="icon-basket"></span></a></li>
+                                </ul>
+                                <a href="_ajax_view-product-popup.html" class="quick-view  fancybox fancybox.ajax hidden-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="icon-zoom-in-2"></span> Xem nhanh </a>
+                                <div class="quick-view visible-xs"> <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span></div>
+                            </div>
+                            <h3 class="title"><a href="#">Beyond Top NLY Trend</a></h3>
+                            <span class="price">$44.95</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //end Products list -->
+
+        </section>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <h3><a href="listing.html">TOP đánh giá</a></h3>
+            <div class="products-widget jcarousel-skin-previews vertical">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-16-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$39.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-17-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Hazel Underwear Soaked in Luxury</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$16.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-18-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-16-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$39.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-17-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Hazel Underwear Soaked in Luxury</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$16.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-18-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //end Products widget -->
+<!-- Products widgets mobile -->
+<section class="content visible-xs">
+    <div class="product-widgets">
+        <div class="item">
+            <h3><a href="listing.html">Bán chạy</a></h3>
+            <div class="products-widget">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-07-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-08-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-09-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">V Front Peplum Dress Club L</a></p>
+                            <span class="rating"> </span> <span class="price">$22.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="item">
+            <h3><a href="listing.html">sản phẩm mới</a></h3>
+            <div class="products-widget">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-10-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$39.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-11-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-12-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Basic Cami Top River Island</a></p>
+                            <span class="rating"> </span> <span class="price">$9.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="item">
+            <h3><a href="listing.html">Đang giảm giá</a></h3>
+            <div class="products-widget">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-13-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Nicole T-Shirt Issue </a></p>
+                            <span class="rating"> </span> <span class="price old">$24.25</span> <span class="price new">$10.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-14-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Los Angeles Top American Vintage</a></p>
+                            <span class="rating"> </span> <span class="price old">$35.95</span> <span class="price new">$24.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-15-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price old">$24.95</span> <span class="price new">$39.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="item">
+            <h3><a href="listing.html">TOP đánh giá</a></h3>
+            <div class="products-widget">
+                <ul class="slides">
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-16-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Season Sweater NLY Trend</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$39.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-17-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Hazel Underwear Soaked in Luxury</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$16.95</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product">
+                            <a href="product_default.html" class="preview-image"><img class="img-responsive animate scale" src="~/assets/client/images/products/product-18-small.jpg" alt=""></a>
+                            <p class="name"><a href="product_default.html" class="preview-image">Raglan Sleeve Tee Maison Scotch</a></p>
+                            <span class="rating"> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-3"></i> <i class="icon-star-empty"></i> </span> <span class="price">$44.95</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Social navbar -->
+<section class="content content-border nopad-xs social-widget">
+    <div class="row">
+        <div class="col-sm-6 col-md-6  col-lg-6 newsletter collapsed-block">
+            <div class="row">
+                <div class="col-lg-5  col-md-12 col-sm-12 ">
+                    <h3>Đăng ký </br>Nhận thông báo <a class="expander visible-xs" href="#TabBlock-1">+</a></h3>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 tabBlock" id="TabBlock-1">
+                    <p>Enter your email and we'll send you a coupon with 10% off your next order.</p>
+                    <form class="form-inline" role="form">
+                        <div class="form-group input-control">
+                            <button type="submit" class="button"><span class="icon-envelop"></span></button>
+                            <input type="text" class="form-control" value="Your E-mail..." onblur="if (this.value == '') {this.value = 'Your E-mail...';}" onfocus="if(this.value == 'Your E-mail...') {this.value = '';}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 collapsed-block">
+            <h3>tìm thấy chúng tôi trên<a class="expander visible-xs" href="#TabBlock-2">+</a></h3>
+            <div class="tabBlock" id="TabBlock-2">
+                <ul class="find-us">
+                    <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-facebook-3"></span></a></li>
+                    <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-twitter-3"></span></a></li>
+                    <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-linkedin-2"></span></a></li>
+                    <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-youtube-3"></span></a></li>
+                    <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-pinterest-2"></span></a></li>
+                    <li class="divider"><a href="#" class="animate-scale"><span class="icon icon-googleplus-2"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //end Social navbar -->

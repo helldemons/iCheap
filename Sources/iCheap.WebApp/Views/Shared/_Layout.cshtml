@@ -1,42 +1,308 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Megatron Template</title>
+    <!-- CSS preloader -->
+    <link href="~/assets/client/css/loader.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/assets/client/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/assets/client/css/megatron-template.css" rel="stylesheet">
+    <!-- CSS modules -->
+    <link href="~/assets/client/css/icomoon.css" rel="stylesheet">
+    <link href="~/assets/client/css/fontello.css" rel="stylesheet">
+    <link href="~/assets/client/css/flexslider.css" rel="stylesheet">
+    <link href="~/assets/client/css/jcarousel.css" rel="stylesheet">
+    <link href="~/assets/client/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/assets/client/css/owl.theme.css" rel="stylesheet">
+    <link href="~/assets/client/css/cloudzoom.css" rel="stylesheet">
+    <link href="~/assets/client/css/sfmenu.css" rel="stylesheet">
+    <link href="~/assets/client/css/isotope.css" rel="stylesheet">
+    <link href="~/assets/client/css/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link href="~/assets/client/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="~/assets/client/css/hoverfold.css" rel="stylesheet">
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+<body class="responsive">
+    <div class="loader">
+        <div class="bubblingG"> <span id="bubblingG_1"> </span> <span id="bubblingG_2"> </span> <span id="bubblingG_3"> </span> </div>
+    </div>
+    <!-- Off Canvas Menu -->
+    <nav id="off-canvas-menu">
+        <div id="off-canvas-menu-title">MENU<span class="icon icon-cancel-3" id="off-canvas-menu-close"></span></div>
+        <ul class="expander-list">
+            <li> <span class="name"><a href="index.html">Trang chủ</a></span></li>
+            <li> <span class="name"><a href="about.html">Giới thiệu</a></span></li>
+            <li> <span class="name"><a href="bloglist.html">Tin tức - sự kiện </a></span></li>
+            <li>
+                <span class="name"> <span class="expander">-</span> <a href="listing.html">Women</a> </span>
+                <ul>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-dress"></span>Dresses</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Club Dresses</a></span></li>
+                            <li><span class="name"><a href="listing.html">Evening Dresses</a></span></li>
+                            <li><span class="name"><a href="listing.html">Prom Dresses</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-shirts"></span>Shirts</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #1</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #2</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #3</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-coats"></span>Coats</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #4</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #5</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #6</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-jackets"></span>Jackets</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #7</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #8</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #9</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-shorts"></span>Shorts</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #10</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #11</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #12</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-jeans"></span>Jeans</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #10</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #11</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #12</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-skirts"></span>Skirts</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #16</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #17</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"> <span class="expander">-</span> <a href="listing.html"><span class="icon m-icon-lingerie"></span>Lingerie</a> </span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #18</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #19</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #20</a></span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="name"><a href="listing.html"><span class="icon m-icon-tops"></span>Tops</a></span>
+                        <ul>
+                            <li><span class="name"><a href="listing.html">Empty category #21</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #22</a></span></li>
+                            <li><span class="name"><a href="listing.html">Empty category #23</a></span></li>
+                        </ul>
+                    </li>
                 </ul>
+            </li>
+            <li> <span class="name"><a href="">Tư vấn - dịch vụ</a></span></li>
+            <li> <span class="name"><a href="contacts.html">Liên hệ</a></span></li>
+        </ul>
+    </nav>
+    <!-- //end Off Canvas Menu -->
+
+    <div id="outer">
+        <div id="outer-canvas">
+            <!-- Navbar -->
+            <header>
+
+                <!-- Back to top -->
+                <div class="back-to-top"><span class="icon-arrow-up-4"></span></div>
+                <!-- //end Back to top -->
+
+
+                @{ Html.RenderAction("_CategoryMenuHome", "Home"); }
+
+                <!-- Navbar height -->
+                <div class="navbar-height-inner"></div>
+                <!-- Navbar height -->
+                <!-- Navbar height -->
+                <div class="navbar-height"></div>
+                <!-- Navbar height -->
+
+            </header>
+            <!-- //end Navbar -->
+            <!-- Slider -->
+
+            @*<section class="main-slider container hidden-xs">
+                <div class="owl-slider-outer">
+                    <a class="owl-slider-prev"></a> <a class="owl-slider-next"></a>
+                    <div class="owl-slider">
+                        <div class="item"><img src="~/assets/client/images/home_boxed_slider1.jpg" alt=""> <a href="index.html" class="title-slide-01"> <span class="big">Sale</span> <span class="middle">up to 40% OFF</span> </a></div>
+                        <div class="item"><img src="~/assets/client/images/home_boxed_slider2.jpg" alt=""> <a href="index.html" class="title-slide-02"> <span class="big">New</span> <span class="small">collection</span> <span class="middle">AUTUMN 2014</span> </a> </div>
+                        <div class="item"><img src="~/assets/client/images/home_boxed_slider3.jpg" alt=""> <a href="index.html" class="title-slide-03"> <span class="big">Special offer</span> <span class="middle">Save money with Lingerie SALE</span> </a></div>
+                    </div>
+                </div>
+                <div class="banners-block">
+                    <div class="item">
+                        <a href="#">
+                            <img src="~/assets/client/images/banner1.jpg" alt="">
+                            <div class="banner-text black">
+                                100%<br>
+                                RETINA READY
+                            </div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="~/assets/client/images/banner2.jpg" alt="">
+                            <div class="banner-text">
+                                <div class="inside">
+                                    RESPONSIVE<br>
+                                    LAYOUT
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>*@
+
+            <!-- //end Slider -->
+            <!-- Social widgets -->
+            <section class="social-widgets hidden-xs">
+                <ul class="items">
+                    <li class="item item-01 facebook">
+                        <a href="social/facebook.html" class="tab-icon"><span class="icon-facebook-3"></span></a>
+                        <div class="tab-content">
+                            <div class="title">FACEBOOK</div>
+                            <div class="loading"><img src="~/assets/client/images/ajax-loader.gif" class="ajaxloader" alt="loader"></div>
+                        </div>
+                    </li>
+                    <li class="item item-02 twitter">
+                        <a href="social/twitter.html" class="tab-icon"><span class="icon-twitter-3"></span></a>
+                        <div class="tab-content">
+                            <div class="title">TWITTER FEEDS</div>
+                            <div class="loading"><img src="~/assets/client/images/ajax-loader.gif" class="ajaxloader" alt="loader"></div>
+                        </div>
+                    </li>
+                    <li class="item item-03 youtube">
+                        <a href="social/youtubevideo.html" class="tab-icon"><span class="icon icon-youtube-3"></span></a>
+                        <div class="tab-content">
+                            <div class="title">Video</div>
+                            <div class="loading"><img src="~/assets/client/images/ajax-loader.gif" class="ajaxloader" alt="loader"></div>
+                        </div>
+                    </li>
+                    <li class="item item-04 contacts">
+                        <a href="social/googlemap.html" class="tab-icon"><span class="icon-globe"></span></a>
+                        <div class="tab-content">
+                            <div class="title">Find Us</div>
+                            <div class="loading"><img src="~/assets/client/images/ajax-loader.gif" class="ajaxloader" alt="loader"></div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <!-- //end Social widgets -->
+            @RenderBody()
+            <div class="container">
+                <!-- Footer -->
+                <footer>
+                    <section class="footer-navbar dark">
+                        <div class="container content nopad-xs">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                    <h3>Thông tin<a class="expander visible-xs" href="#TabBlock-3">+</a></h3>
+                                    <div class="tabBlock" id="TabBlock-3">
+                                        <ul class="menu">
+                                            <li><a href="about.html">Về chúng tôi</a></li>
+                                            <li><a href="#">Giao hàng &amp; Đổi trả</a></li>
+                                            <li><a href="#">Hướng dẫn sử dụng</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                    <h3><span class="attention"><span class="attention_icon"></span></span>Dịch vụ khác hàng<a class="expander visible-xs" href="#TabBlock-4">+</a></h3>
+                                    <div class="tabBlock" id="TabBlock-4">
+                                        <ul class="menu">
+                                            <li><a href="#">Hỗ trợ Online</a></li>
+                                            <li><a href="#">Giúp đỡ & FAQs</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix visible-sm"></div>
+                                <div class="col-sm-6 col-md-3 col-lg-3 collapsed-block">
+                                    <h3>MÁY BÚN PHỞ MINI<a class="expander visible-xs" href="#TabBlock-6">+</a></h3>
+                                    <div class="tabBlock" id="TabBlock-6">
+                                        <ul class="menu">
+                                            <li><span class="icon icon-house"></span> 7563 St. Vincent Place, Glasgow</li>
+                                            <li><span class="icon icon-phone-4"></span> 321321321, 321321321</li>
+                                            <li><span class="icon icon-envelop"></span> <a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
+                                            <li><span class="icon icon-skype-2"></span> <a href="#">shop.test</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="footer-bottom-block container">
+                        <div class="row">
+                            <div class="col-sm-5 col-md-4 copyright-text"> &copy; 2015&nbsp;<a href="#">Máy phở Mini</a>. All Rights Reserved. </div>
+                            <div class="col-sm-3 col-md-4"></div>
+                            <div class="col-sm-4 col-md-4">
+                                <ul class="payment-list pull-right">
+                                    <li><img src="~/assets/client/images/icon-payment-01.png" width="36" height="22" alt=""></li>
+                                    <li><img src="~/assets/client/images/icon-payment-02.png" width="36" height="22" alt=""></li>
+                                    <li><img src="~/assets/client/images/icon-payment-03.png" width="36" height="22" alt=""></li>
+                                    <li><img src="~/assets/client/images/icon-payment-04.png" width="36" height="22" alt=""></li>
+                                    <li><img src="~/assets/client/images/icon-payment-05.png" width="36" height="22" alt=""></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </footer>
             </div>
+            <div id="outer-overlay"></div>
+            <!-- //end Footer -->
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/assets/client/js/jquery-1.10.2.min.js"></script>
+    <script src="~/assets/client/js/jquery.easing.1.3.js"></script>
+    <script src="~/assets/client/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/assets/client/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/assets/client/js/jquery.mousewheel.min.js"></script>
+    <script src="~/assets/client/js/bootstrap.min.js"></script>
+    <script src="~/assets/client/js/jquery.flexslider.js"></script>
+    <script src="~/assets/client/js/owl.carousel.js"></script>
+    <script src="~/assets/client/js/jquery.jcarousel.min.js"></script>
+    <script src="~/assets/client/js/cloudzoom.js"></script>
+    <script src="~/assets/client/js/jquery.isotope.min.js"></script>
+    <script src="~/assets/client/js/jquery.parallax.js"></script>
+    <script src="~/assets/client/js/jquery.fancybox.js?v=2.1.5"></script>
+    <script src="~/assets/client/js/jquery.inview.js"></script>
+    <script src="~/assets/client/js/hoverIntent.js"></script>
+    <script src="~/assets/client/js/superfish.js"></script>
+    <script src="~/assets/client/js/supersubs.js"></script>
+    <script src="~/assets/client/js/jquery.plugin.js"></script>
+    <script src="~/assets/client/js/jquery.countdown.js"></script>
+    <script src="~/assets/client/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script src="~/assets/client/js/megatron.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

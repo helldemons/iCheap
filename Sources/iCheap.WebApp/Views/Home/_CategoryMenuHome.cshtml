@@ -1,0 +1,328 @@
+﻿@using iCheap.Models;
+@{ 
+    IEnumerable<Categories> categories = ViewBag.CategoryMenu as IEnumerable<Categories>;
+}
+
+<section class="navbar">
+    <div class="background">
+        <div class="container">
+            <!-- Logo -->
+            <div class="navbar-logo pull-left"> <a href="index.html"><img src="~/assets/client/images/logo-icheap.png" alt="Megatron"></a></div>
+            <div class="navbar-welcome pull-left compact-hidden hidden-xs">Chào mừng các bạn đến với iCheap!</div>
+            <div class="clearfix visible-sm"></div>
+            <!-- //end Logo -->
+            <!-- Secondary menu -->
+            <div class="navbar-secondary-menu pull-right hidden-xs">
+                <div class="btn-group compact-hidden">
+                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-vcard"></span> Tài khoản <span class="caret"></span> </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Tài khoản</a></li>
+                        <li><a href="#">Danh sách mong muốn</a></li>
+                        <li><a href="#">Kiểm tra đơn hàng</a></li>
+                        <li class="divider"></li>
+                        <li><a href="login.html">Đăng nhập</a></li>
+                        <li><a href="login.html">Đăng ký</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group compact-hidden">
+                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-bubbles"></span> Tiếng Việt <span class="caret"></span> </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"> <span class="icon-flag icon-flag-de">&nbsp;</span> Tiếng Việt</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-en">&nbsp;</span> Tiếng Anh</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group compact-hidden">
+                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="icon icon-justice"></span> So sánh (0) <span class="caret"></span> </a>
+                    <div class="dropdown-menu pull-right shoppingcart-box empty" role="menu"> Danh sách rỗng! </div>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="compact-hidden">Giỏ hàng - <strong>215.000 VNĐ</strong></span> <span class="icon-xcart-animate"><span class="box">3</span><span class="handle"></span></span> </a>
+                    <div class="dropdown-menu pull-right shoppingcart-box" role="menu">
+                        Những mặt hàng đã chọn
+                        <ul class="list">
+                            <li class="item">
+                                <a href="product_default.html" class="preview-image"><img class="preview" src="~/assets/client/images/products/product-07-small.jpg" alt=""></a>
+                                <div class="description"> <a href="#">Quần lót nam</a> <strong class="price">1 x 12.000 VNĐ</strong> </div>
+                            </li>
+                            <li class="item">
+                                <a href="product_default.html" class="preview-image"><img class="preview" src="~/assets/client/images/products/product-07-small.jpg" alt=""></a>
+                                <div class="description"> <a href="#">Quần lót nữ</a> <strong class="price">12 x 150.000 VNĐ</strong> </div>
+                            </li>
+                        </ul>
+                        <div class="total">Total: <strong>$44.95</strong></div>
+                        <a href="#" class="btn btn-mega">Thanh toán</a>
+                        <div class="view-link"><a href="shopping_cart.html">Xem giỏ hàng </a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Secondary menu mobile -->
+            <div class="navbar-secondary-menu pull-right compact-hidden visible-xs">
+                <div class="btn-group visible-xs">
+                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">En <span class="caret"></span> </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"> <span class="icon-flag icon-flag-en">&nbsp;</span> English</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-de">&nbsp;</span> German</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-fr">&nbsp;</span> French</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-da">&nbsp;</span> Danish</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-el">&nbsp;</span> Greek</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-es">&nbsp;</span> Spanish</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-it">&nbsp;</span> Italian</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-nl">&nbsp;</span> Dutch</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-pl">&nbsp;</span> Polish</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-pt">&nbsp;</span> Portuguese</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-ru">&nbsp;</span> Russian</a></li>
+                        <li><a href="#"> <span class="icon-flag icon-flag-sv">&nbsp;</span> Swedish</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group visible-xs">
+                    <a href="#" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">$ <span class="caret"></span> </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">($) US Dollars</a></li>
+                        <li><a href="#">(€) Euro</a></li>
+                        <li><a href="#">(&pound;) British Pounds</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //end Secondary menu -->
+            <!-- Search -->
+            <form class="navbar-search form-inline hidden-xs pull-right" role="form">
+                <div class="form-group">
+                    <button type="submit" class="button"><span class="icon-search-2"></span></button>
+                    <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
+                </div>
+                <div class="dropdown-search">
+                    <ul>
+                        <li><a href="#"><span class="amount">12</span>search auto</a></li>
+                        <li><a href="#"><span class="amount">22</span>search auto</a></li>
+                        <li><a href="#"><span class="amount">2</span>search auto</a></li>
+                        <li><a href="#"><span class="amount">45</span>search auto</a></li>
+                        <li><a href="#"><span class="amount">11</span>search auto</a></li>
+                        <li><a href="#"><span class="amount">4</span>search auto</a></li>
+                    </ul>
+                </div>
+            </form>
+            <!-- //end Search --> 
+            <!-- Main menu -->
+            <dl class="navbar-main-menu hidden-xs">
+                <dt class="item">
+                    <ul class="sf-menu">
+                        <li><a href="index.html" class="btn-main"><span class="icon icon-home"></span></a></li>
+                    </ul>
+                </dt>
+                <dd></dd>
+                <dt class="item">
+                    <ul class="sf-menu">
+                        <li><a href="index.html">Giới thiệu</a></li>
+                    </ul>
+                </dt>
+                <dd></dd>
+                <dt class="item">
+                    <ul class="sf-menu">
+                        <li> <a href="bloglist.html"> Tin tức - Sự kiện </a></li>
+                    </ul>
+                </dt>
+                <dd></dd>
+                <dt class="item"> <a href="#" class="btn-main line">Danh Mục</a> </dt>
+                <dd class="item-content">
+                    <div class="navbar-main-submenu">
+                        <ul class="exclusive">
+                            <li><span class="icon icon-dropbox"></span> <a href="listing.html">Gifts exclusive</a></li>
+                            <li><span class="icon icon-coins"></span> <a href="listing.html">Offers</a></li>
+                        </ul>
+                        <div class="wrapper-border">
+                            <div class="row">
+
+                                <!-- caregories -->
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        @foreach (var cat in categories)
+                                        {
+                                            <div class="col-xs-12 col-md-12 col-lg-2">
+                                                <div class="submenu-block">
+                                                    <span class="icon"></span>@Html.ActionLink(cat.VNName, "CategoryDetail", "Category", new { id = cat.CategoryID, url = cat.VNRewriteUrl }, new { @class = "name" })
+                                                    @if (cat.Childs != null && cat.Childs.ToList().Count > 0)
+                                                    {
+                                                        <ul>
+                                                            @foreach (var catChild in cat.Childs)
+                                                            {
+                                                                <li>@Html.ActionLink(catChild.VNName, "CategoryDetail", "Category", new { id = catChild.CategoryID, url = catChild.VNRewriteUrl }, null)</li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        @*<div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-dress"></span> <a class="name" href="listing.html">Dresses</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Club Dresses 1</a></li>
+                                                    <li><a href="listing.html">Evening Dresses</a></li>
+                                                    <li><a href="listing.html">Prom Dresses</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-shirts"></span> <a class="name" href="listing.html">SHIRTS</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #1</a></li>
+                                                    <li><a href="listing.html">Empty category #2</a></li>
+                                                    <li><a href="listing.html">Empty category #3</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-coats"></span> <a class="name" href="listing.html">COATS</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #4</a></li>
+                                                    <li><a href="listing.html">Empty category #5</a></li>
+                                                    <li><a href="listing.html">Empty category #6</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-jackets"></span> <a class="name" href="listing.html">JACKETS</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #7</a></li>
+                                                    <li><a href="listing.html">Empty category #8</a></li>
+                                                    <li><a href="listing.html">Empty category #9</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-shorts"></span> <a class="name" href="listing.html">SHORTS</a> <span class="label label-mega">-15%</span>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #10</a></li>
+                                                    <li><a href="listing.html">Empty category #11</a></li>
+                                                    <li><a href="listing.html">Empty category #12</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-jeans"></span> <a class="name" href="listing.html">JEANS</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #10</a></li>
+                                                    <li><a href="listing.html">Empty category #11</a></li>
+                                                    <li><a href="listing.html">Empty category #12</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-skirts"></span> <a class="name" href="listing.html">SKIRTS</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #16</a></li>
+                                                    <li><a href="listing.html">Empty category #17</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block">
+                                                <span class="icon m-icon-lingerie"></span> <a class="name" href="listing.html">LINGERIE</a>
+                                                <ul>
+                                                    <li><a href="listing.html">Empty category #18</a></li>
+                                                    <li><a href="listing.html">Empty category #19</a></li>
+                                                    <li><a href="listing.html">Empty category #20</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>*@
+                                        @*<div class="col-xs-6 col-md-4 col-lg-3">
+                                            <div class="submenu-block"> <span class="icon m-icon-tops"></span> <a class="name" href="listing.html">Tops</a> </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                                <!-- //end caregories -->
+                                <!-- html block -->
+                                @*<div class="col-xs-3">
+                                    <div class="img-fullheight"><img class="img-responsive" src="~/assets/client/images/menu-img-right.png" alt=""></div>
+                                </div>*@
+                                <!-- //end html block -->
+                            </div>
+                        </div>
+                        <ul class="exclusive">
+                            <li><span class="icon icon-tag "></span> <a href="listing.html">SPECIAL OFFER</a></li>
+                            <li><span class="icon icon-sale"></span> <a href="listing.html">UP TO 50% OFF DISCOUNTS</a></li>
+                        </ul>
+                    </div>
+                </dd>
+                <dt class="item">
+                    <ul class="sf-menu">
+                        <li> <a href="contacts.html"> Liên hệ </a></li>
+                    </ul>
+                </dt>
+                <dd></dd>
+            </dl>
+            <!-- //end Main menu -->
+
+        </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="container visible-xs">
+        <div class="mobile-nav row">
+            <div class="nav-item item-01"><a href="#" id="off-canvas-menu-toggle"><span class="icon icon-list-4"></span></a></div>
+            <div class="nav-item item-02">
+                <a href="#"><span class="icon icon-vcard"></span></a>
+                <div class="tab-content">
+                    <ul class="menu-list">
+                        <li><a href="#">Account 1</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="login.html">Log In</a></li>
+                        <li><a href="login.html">Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-item item-03">
+                <a href="#"><span class="icon icon-search-2"></span></a>
+                <div class="tab-content">
+                    <!-- Search -->
+                    <form class="navbar-search form-inline" role="form">
+                        <div class="form-group">
+                            <button type="submit" class="button"><span class="icon-search-2"></span></button>
+                            <input type="text" class="form-control" value="Search" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if(this.value == 'Search') {this.value = '';}">
+                        </div>
+                    </form>
+                    <!-- //end Search -->
+                </div>
+            </div>
+            <div class="nav-item item-04">
+                <a href="#"><span class="icon-xcart-white">3</span></a>
+                <div class="tab-content">
+                    <div class="shoppingcart-box">
+                        <div class="title">Recently added item(s)</div>
+                        <ul class="list">
+                            <li class="item">
+                                <div class="icon-product-edit"><a class="icon icon-edit" href="#"></a></div>
+                                <div class="icon-product-delete"><a class="icon icon-trash-2" href="#"></a></div>
+                                <a href="product_default.html" class="preview-image"><img class="preview" src="images/products/product-02-small.jpg" alt=""></a>
+                                <div class="description"> <a href="#">Mauris et ligula quis</a> <strong class="price">1 x $44.95</strong> </div>
+                            </li>
+                            <li class="item">
+                                <div class="icon-product-edit"><a class="icon icon-edit" href="#"></a></div>
+                                <div class="icon-product-delete"><a class="icon icon-trash-2" href="#"></a></div>
+                                <a href="product_default.html" class="preview-image"><img class="preview" src="images/products/product-03-small.jpg" alt=""></a>
+                                <div class="description"> <a href="#">Mauris et ligula quis</a> <strong class="price">1 x $44.95</strong> </div>
+                            </li>
+                        </ul>
+                        <div class="total">Total: <strong>$44.95</strong></div>
+                        <a href="#" class="btn btn-mega">Proceed to Checkout</a>
+                        <div class="view-link"><a href="shopping_cart.html">View shopping cart </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //end Mobile menu -->
+    <!-- Navbar switcher -->
+    <div class="navbar-switcher-container">
+        <div class="navbar-switcher"> <span class="i-inactive"><img src="~/assets/client/images/icon-icheap.png" width="35" height="35" alt=""></span> <span class="i-active icon-cancel-3"></span> </div>
+    </div>
+    <!-- //end Navbar switcher -->
+
+</section>

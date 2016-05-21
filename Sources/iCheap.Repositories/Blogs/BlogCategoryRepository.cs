@@ -17,13 +17,13 @@ namespace iCheap.Repositories
 
     public class BlogCategoryRepository : IBlogCategoryRepository
     {
-        private readonly string storedName = "sp_BlogCategorys";
+        private readonly string storedName = "sp_BlogCategories";
 
         public IEnumerable<BlogCategories> GetAllBlogCategories()
         {
             var param = SQLHelper.GetBasicDynamicParamters(DBNull.Value, action: BaseConstants.GET_ALL_ITEMS);
 
-            return SQLHelper.QuerySP<BlogCategories>(storedName, param);
+            return SQLHelper.QuerySP<BlogCategories, BlogCategories>(storedName, param, delegateFunc: MapHelper.MapBlogCategory, splitOn: "BlogCategoryID");
         }
 
         public BlogCategories GetBlogCategoryById(int blogCategoryId)
@@ -31,7 +31,7 @@ namespace iCheap.Repositories
             var param = SQLHelper.GetBasicDynamicParamters(blogCategoryId, action: BaseConstants.GET_ITEM_BY_ID);
             param.Add("BlogCategoryID", blogCategoryId, DbType.Int32);
 
-            var BlogCategorys = SQLHelper.QuerySP<BlogCategories>(storedName, param);
+            var BlogCategorys = SQLHelper.QuerySP<BlogCategories, BlogCategories>(storedName, param, delegateFunc: MapHelper.MapBlogCategory, splitOn: "BlogCategoryID");
             if (BlogCategorys != null && BlogCategorys.Any())
                 return BlogCategorys.Single();
 

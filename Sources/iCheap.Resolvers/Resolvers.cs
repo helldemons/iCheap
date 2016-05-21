@@ -15,7 +15,12 @@ namespace iCheap.Resolvers
             config.DependencyResolver = new UnityResolver(container);
         }
 
-        private static void RegisterRepositories(UnityContainer container)
+        public static void Register(IUnityContainer container)
+        {
+            RegisterRepositories(container);
+        }
+
+        private static void RegisterRepositories(IUnityContainer container)
         {
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
 

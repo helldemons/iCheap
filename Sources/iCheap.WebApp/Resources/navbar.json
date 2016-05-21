@@ -1,23 +1,37 @@
 ﻿[
     {
-        "action": "Index",
-        "controller": "Origin",
+        "action": "Origin",
+        "controller": "Admin",
         "icon": "fa-home",
         "isDropdown": false,
         "name": "Xuất Xứ"
     },
     {
-        "action": "Index",
-        "controller": "Brand",
+        "action": "Brand",
+        "controller": "Admin",
         "icon": "fa-home",
         "isDropdown": false,
         "name": "Thương Hiệu"
     },
     {
-        "action": "Index",
-        "controller": "Category",
+        "action": "Category",
+        "controller": "Admin",
         "icon": "fa-home",
         "isDropdown": false,
         "name": "Nhóm Hàng Hóa"
+    },
+    {
+        "action": "BlogCategory",
+        "controller": "Admin",
+        "icon": "fa-home",
+        "isDropdown": false,
+        "name": "Nhóm Tin Tức"
+    },
+    {
+        "action": "Product",
+        "controller": "Admin",
+        "icon": "fa-home",
+        "isDropdown": false,
+        "name": "Hàng Hóa"
     }
 ]

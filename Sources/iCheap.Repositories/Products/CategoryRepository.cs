@@ -9,6 +9,7 @@ namespace iCheap.Repositories
     public interface ICategoryRepository
     {
         IEnumerable<Categories> GetAllCategories();
+        IEnumerable<Categories> GetCategoryCombobox();
         Categories GetCategoryById(int categoryId);
         string InsertCategory(int userId, Categories category);
         string UpdateCategory(int userId, Categories category);
@@ -23,6 +24,12 @@ namespace iCheap.Repositories
         {
             var param = SQLHelper.GetBasicDynamicParamters(DBNull.Value, action: BaseConstants.GET_ALL_ITEMS);
 
+            return SQLHelper.QuerySP<Categories, Categories>(storedName, param, delegateFunc: MapHelper.MapCategory, splitOn: "CategoryId");
+        }
+
+        public IEnumerable<Categories> GetCategoryCombobox()
+        {
+            var param = SQLHelper.GetBasicDynamicParamters(DBNull.Value, action: "GetParentChildList");
             return SQLHelper.QuerySP<Categories, Categories>(storedName, param, delegateFunc: MapHelper.MapCategory, splitOn: "CategoryId");
         }
 

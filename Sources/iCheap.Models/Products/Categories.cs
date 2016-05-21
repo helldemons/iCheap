@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace iCheap.Models
 {
@@ -60,5 +61,8 @@ namespace iCheap.Models
 
         [JsonProperty(PropertyName = "parent", NullValueHandling = NullValueHandling.Ignore)]
         public Categories Parent { get; set; }
+
+        [JsonProperty(PropertyName = "childs", NullValueHandling = NullValueHandling.Ignore)]
+        public IEnumerable<Categories> Childs{ get; set; }
     }
 }

@@ -12,6 +12,7 @@ using iCheap.WebApp.Models;
 using iCheap.Models;
 using System.Web.Script.Serialization;
 using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace iCheap.WebApp.Controllers
 {
