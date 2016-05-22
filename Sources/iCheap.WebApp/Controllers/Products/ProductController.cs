@@ -1,6 +1,8 @@
 ﻿using iCheap.Models;
 using iCheap.Repositories;
 using System.Web.Mvc;
+using System.Linq;
+using System;
 
 namespace iCheap.WebApp.Controllers
 {
@@ -33,11 +35,16 @@ namespace iCheap.WebApp.Controllers
             var relatedProduces = ProductRepository.GetProductByProductFilter(new Products
             {
                 CategoryID = product.Category.Parent != null ? product.Category.Parent.CategoryID : product.Category.CategoryID
-            });
+            }).ToList();
+            relatedProduces.RemoveAll(p => p.ProductID == id);
+
+            var otherProducts = relatedProduces.AsQueryable().OrderBy(n => Guid.NewGuid()).Take(2).ToList();
+
             ProductRepository.UpdateViewCount(id);
 
             product.Category = category;
             ViewBag.RelatedProducts = relatedProduces;
+            ViewBag.OtherProducts = otherProducts;
             return View(product);
         }
     }

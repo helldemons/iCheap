@@ -50,6 +50,7 @@
     <Compile Include="Base\SQLHelper.cs" />
     <Compile Include="Blogs\BlogCategoryRepository.cs" />
     <Compile Include="Blogs\BlogRepository.cs" />
+    <Compile Include="Dictionaries\ProvinceRepository.cs" />
     <Compile Include="Products\BrandRepository.cs" />
     <Compile Include="Products\CategoryRepository.cs" />
     <Compile Include="Products\OriginRepository.cs" />

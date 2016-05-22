@@ -48,7 +48,11 @@
     <Compile Include="BaseModel.cs" />
     <Compile Include="Blogs\BlogCategories.cs" />
     <Compile Include="Blogs\Blogs.cs" />
+    <Compile Include="Dictionaries\Districts.cs" />
+    <Compile Include="Dictionaries\Provinces.cs" />
+    <Compile Include="Dictionaries\Towns.cs" />
     <Compile Include="Products\Brands.cs" />
+    <Compile Include="Products\Cart.cs" />
     <Compile Include="Products\Categories.cs" />
     <Compile Include="Products\CategoryProducts.cs" />
     <Compile Include="Products\Origins.cs" />

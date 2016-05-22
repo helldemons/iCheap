@@ -1099,6 +1099,9 @@
     <Content Include="assets\admin\Scripts\vectormap-utils\dx.vectormaputils.js" />
     <Content Include="assets\admin\Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <None Include="assets\admin\Scripts\_references.js" />
+    <Content Include="assets\client\app\cart.js" />
+    <Content Include="assets\client\app\global.js" />
+    <Content Include="assets\client\app\main.js" />
     <Content Include="assets\client\css\bootstrap-xl.css" />
     <Content Include="assets\client\css\bootstrap-xxl.css" />
     <Content Include="assets\client\css\bootstrap.min.css" />
@@ -1528,6 +1531,7 @@
     <Content Include="assets\client\js\jquery.rw-preloader.js" />
     <Content Include="assets\client\js\jquery.rw-slider.js" />
     <Content Include="assets\client\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="assets\client\js\knockout-3.3.0.js" />
     <Content Include="assets\client\js\main.js" />
     <Content Include="assets\client\js\megatron.js" />
     <Content Include="assets\client\js\modernizr-2.6.2.min.js" />

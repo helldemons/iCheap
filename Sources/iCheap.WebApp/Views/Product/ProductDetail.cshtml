@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     IEnumerable<Products> relatedProducts = ViewBag.RelatedProducts as IEnumerable<Products>;
+    IEnumerable<Products> otherProducts = (ViewBag.OtherProducts as IEnumerable<Products>);
 }
 
 <!-- Breadcrumbs -->
@@ -24,24 +25,23 @@
 </section>
 <!-- //end Breadcrumbs -->
 <!-- Small Previews -->
-<section class="container hidden-xs">
-    <div class="small-previews">
-        <a href="#" class="prev"></a>
-        <div class="small-preview prev"><img src="~/assets/client/images/products/small-preview1.jpg" alt="" class="img-responsive"></div>
-        <a href="#" class="next"></a>
-        <div class="small-preview next"><img src="~/assets/client/images/products/small-preview2.jpg" alt="" class="img-responsive"></div>
-    </div>
-</section>
-<!-- //end Small Previews -->
-<!-- Small Previews -->
-<section class="container hidden-xs">
-    <div class="small-previews">
-        <a href="#" class="prev"></a>
-        <div class="small-preview prev"><img src="~/assets/client/images/products/small-preview1.jpg" alt="" class="img-responsive"></div>
-        <a href="#" class="next"></a>
-        <div class="small-preview next"><img src="~/assets/client/images/products/small-preview2.jpg" alt="" class="img-responsive"></div>
-    </div>
-</section>
+@if (otherProducts != null && otherProducts.Count() > 0)
+{
+    <section class="container hidden-xs">
+        <div class="small-previews">
+            @if (otherProducts.Count() >= 1)
+            {
+                <a href="@Url.Action("ProductDetail", "Product", new { id = otherProducts.ToList()[0].ProductID, url = otherProducts.ToList()[0].VNRewriteUrl })" class="prev"></a>
+                <div class="small-preview prev"><img src="@otherProducts.ToList()[0].Thumbnail" alt="" class="img-responsive"></div>
+            }
+            @if (otherProducts.Count() >= 2)
+            {
+                <a href="@Url.Action("ProductDetail", "Product", new { id = otherProducts.ToList()[1].ProductID, url = otherProducts.ToList()[1].VNRewriteUrl })" class="next"></a>
+                <div class="small-preview next"><img src="@otherProducts.ToList()[1].Thumbnail" alt="" class="img-responsive"></div>
+            }
+        </div>
+    </section>
+}
 <!-- //end Small Previews -->
 <!-- One column content -->
 <section class="container">
@@ -108,8 +108,14 @@
                         <div class="panel-heading"> <a data-toggle="collapse" data-parent="#product-accordion" href="#product-info"> <span class="arrow-down icon-arrow-down-4"></span> <span class="arrow-up icon-arrow-up-4"></span><strong>Thông tin chung</strong></a></div>
                         <div id="product-info" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <p>Thương hiệu: @Model.Brand.VNName</p>
-                                <p>Xuất xứ: @Model.Origin.VNName</p>
+                                @if (Model.Brand != null)
+                                {
+                                    <p>Thương hiệu: @Model.Brand.VNName</p>
+                                }
+                                @if (Model.Origin != null)
+                                {
+                                    <p>Xuất xứ: @Model.Origin.VNName</p>
+                                }
                             </div>
                         </div>
                     </div>
